@@ -336,12 +336,22 @@ html {scroll-behavior: smooth;}img, video {max-width: 100%;height: auto;vertical
   }
 }
 
+/* Header & Navigation Layering Priority */
+.section-header,
+#shopify-section-header,
+.header-wrapper,
+.sticky-header,
+header {
+  position: relative !important;
+  z-index: 999 !important;
+}
+
 /* Floating Icon Bar Styles (Desktop Overlay vs Mobile Stack with Glassmorphism) */
 @media screen and (min-width: 750px) {
   .icon-bar-luxury {
     position: relative !important;
-    z-index: 10 !important;
-    margin-top: -155px !important;
+    z-index: 2 !important;
+    margin-top: -95px !important;
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
