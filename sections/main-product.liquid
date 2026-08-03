@@ -31,6 +31,21 @@
         --slide-inner-percentage-width: {{ section.settings.mobile_slides_inner_width }}%;
       }
     }
+    #MainProduct-{{ section.id }} {
+      background-color: var(--color-base-background-1, #faf7f2);
+      color: var(--color-base-text, #1a1612);
+    }
+    .product__title h1,
+    .product__title,
+    .product__info-container,
+    .product__description,
+    .price,
+    .price-item,
+    .form__label,
+    .shipping-checkpoint__top,
+    .shipping-checkpoint__bottom {
+      color: #1a1612 !important;
+    }
   {%- endstyle -%}
 
   {% if section.settings.image_zoom == 'hover' %}
