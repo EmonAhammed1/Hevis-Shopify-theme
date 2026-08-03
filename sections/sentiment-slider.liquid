@@ -239,30 +239,54 @@
 
 <script>
   (function() {
-    function setupHoverPause() {
+    function setupSmoothAutoSlider() {
       const sliderComponent = document.querySelector('.sentiment-slider--{{ section.id }} splide-component');
       if (!sliderComponent) return;
 
       const splideElement = sliderComponent.querySelector('.splide');
       if (!splideElement) return;
 
-      splideElement.addEventListener('mouseenter', function() {
-        if (splideElement.splide && splideElement.splide.Components && splideElement.splide.Components.Autoplay) {
-          splideElement.splide.Components.Autoplay.pause();
-        }
-      });
+      function configure() {
+        if (splideElement.splide) {
+          const splide = splideElement.splide;
+          splide.options = {
+            ...splide.options,
+            type: 'loop',
+            autoplay: true,
+            interval: 2200,
+            speed: 1200,
+            easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            drag: true,
+            arrows: false,
+            pagination: false
+          };
+          splide.refresh();
 
-      splideElement.addEventListener('mouseleave', function() {
-        if (splideElement.splide && splideElement.splide.Components && splideElement.splide.Components.Autoplay) {
-          splideElement.splide.Components.Autoplay.play();
+          splideElement.addEventListener('mouseenter', function() {
+            if (splide.Components && splide.Components.Autoplay) {
+              splide.Components.Autoplay.pause();
+            }
+          });
+
+          splideElement.addEventListener('mouseleave', function() {
+            if (splide.Components && splide.Components.Autoplay) {
+              splide.Components.Autoplay.play();
+            }
+          });
+        } else {
+          setTimeout(configure, 150);
         }
-      });
+      }
+
+      configure();
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupHoverPause);
+      document.addEventListener('DOMContentLoaded', setupSmoothAutoSlider);
     } else {
-      setupHoverPause();
+      setupSmoothAutoSlider();
     }
   })();
 </script>
