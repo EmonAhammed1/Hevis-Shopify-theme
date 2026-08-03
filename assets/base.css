@@ -604,13 +604,16 @@ sticky-header {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95) !important;
 }
 
-/* Single Product Page Light Background & High Contrast Text */
+/* Single Product Page - Complete Luxury Light Background Canvas */
 html,
 body,
+body.gradient,
 main#MainContent,
+.content-for-layout,
 .template-product,
 .template-product main,
 .template-product #MainContent,
+.template-product .shopify-section,
 .template-product .product-section,
 .template-product [id^="MainProduct-"],
 .template-product .product,
@@ -623,6 +626,7 @@ main#MainContent,
   color: #1a1612 !important;
 }
 
+/* Product Typography & Labels */
 .template-product h1,
 .template-product h2,
 .template-product h3,
@@ -646,6 +650,51 @@ main#MainContent,
 .template-product .shipping-checkpoint__bottom,
 .template-product .quantity__input {
   color: #1a1612 !important;
+}
+
+/* Sale / Savings Badge Fix (SAVE 49%) */
+.template-product .badge,
+.template-product .price__badge-sale,
+.template-product .price .badge,
+.template-product .badge--bottom-left {
+  background-color: #c69a47 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  padding: 0.35rem 0.75rem !important;
+  border-radius: 4px !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 2px 6px rgba(198, 154, 71, 0.3) !important;
+}
+
+/* Variant Option Pills (Selected & Unselected States) */
+.product-form__input input[type='radio'] + label,
+.variant-radios input[type='radio'] + label,
+.product-form__input input + label,
+input[type="radio"] + label {
+  background-color: #ffffff !important;
+  color: #1a1612 !important;
+  border: 1px solid rgba(26, 22, 18, 0.25) !important;
+  border-radius: 20px !important;
+  padding: 0.6rem 1.4rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.product-form__input input[type='radio']:checked + label,
+.variant-radios input[type='radio']:checked + label,
+.product-form__input input:checked + label,
+input[type="radio"]:checked + label {
+  background-color: #1a1612 !important;
+  color: #ffffff !important;
+  border-color: #1a1612 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.product-form__input input[type='radio'] + label:hover,
+input[type="radio"] + label:hover {
+  border-color: #c69a47 !important;
 }
 
 .template-product .select__select,
