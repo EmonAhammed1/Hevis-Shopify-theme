@@ -187,6 +187,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .sentiment-card:hover {
+    transform: translateY(-8px) scale(1.06);
+    z-index: 5;
   }
 
   .sentiment-card__link {
@@ -206,6 +213,11 @@
     margin-bottom: 1.6rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
     background-color: rgba(0, 0, 0, 0.03);
+    transition: box-shadow 0.4s ease;
+  }
+
+  .sentiment-card:hover .sentiment-card__image-wrapper {
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.14);
   }
 
   .sentiment-card__image {
@@ -213,7 +225,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: 16px;
   }
 
