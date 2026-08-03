@@ -331,9 +331,9 @@
         "button_label": "",
         "button_link": "",
         "background_color": "#ffffff",
-        "heading_color": "#1a1612",
-        "text_color": "#332d26",
-        "accent_color": "#c69a47",
+        "heading_color": "#0a0908",
+        "text_color": "#111111",
+        "accent_color": "#b88628",
         "padding_top": 64,
         "padding_bottom": 64,
         "visibility": "always-display"
