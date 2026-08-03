@@ -371,7 +371,7 @@
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    z-index: 10 !important;
+    z-index: 100 !important;
     pointer-events: none !important; 
     border: none !important;
     background: transparent !important;
@@ -386,9 +386,10 @@
     top: 50% !important;
     transform: translateY(-50%) !important;
     pointer-events: auto !important;
-    background: rgba(255, 255, 255, 0.12) !important;
+    cursor: pointer !important;
+    background: rgba(255, 255, 255, 0.15) !important;
     color: white !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
     width: 48px !important;
@@ -398,14 +399,17 @@
     align-items: center !important;
     justify-content: center !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-    z-index: 20 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    z-index: 101 !important;
   }
   fade-slideshow .slideshow__controls .slider-button--prev svg,
-  fade-slideshow .slideshow__controls .slider-button--next svg {
+  fade-slideshow .slideshow__controls .slider-button--next svg,
+  fade-slideshow .slideshow__controls .slider-button--prev path,
+  fade-slideshow .slideshow__controls .slider-button--next path {
     width: 20px !important;
     height: 20px !important;
     fill: currentColor !important;
+    pointer-events: none !important;
   }
   fade-slideshow .slideshow__controls .slider-button--prev:hover,
   fade-slideshow .slideshow__controls .slider-button--next:hover {
@@ -541,28 +545,38 @@
       // Set initial active state
       this.setActiveSlide(0);
 
-      // Event listeners
-      if(this.prevBtn) {
-        this.prevBtn.addEventListener('click', (e) => {
+      // Event delegation for Next, Prev & Dot navigation buttons
+      this.addEventListener('click', (e) => {
+        const prevBtn = e.target.closest('.slider-button--prev');
+        if (prevBtn) {
           e.preventDefault();
+          e.stopPropagation();
           this.prevSlide();
-          if(this.autoRotate) this.play(); // reset timer
-        });
-      }
-      if(this.nextBtn) {
-        this.nextBtn.addEventListener('click', (e) => {
+          if (this.autoRotate) this.play();
+          return;
+        }
+
+        const nextBtn = e.target.closest('.slider-button--next');
+        if (nextBtn) {
           e.preventDefault();
+          e.stopPropagation();
           this.nextSlide();
-          if(this.autoRotate) this.play();
-        });
-      }
-      
-      this.dots.forEach((dot, index) => {
-        dot.addEventListener('click', (e) => {
+          if (this.autoRotate) this.play();
+          return;
+        }
+
+        const dotBtn = e.target.closest('.slider-counter__link');
+        if (dotBtn) {
           e.preventDefault();
-          this.setActiveSlide(index);
-          if(this.autoRotate) this.play();
-        });
+          e.stopPropagation();
+          const dots = Array.from(this.querySelectorAll('.slider-counter__link'));
+          const index = dots.indexOf(dotBtn);
+          if (index !== -1) {
+            this.setActiveSlide(index);
+            if (this.autoRotate) this.play();
+          }
+          return;
+        }
       });
 
       if (this.autoRotate) {
