@@ -12,8 +12,48 @@
   }
 
   .sentiment-slider--{{ section.id }} {
+    position: relative;
+    overflow: hidden;
     background-color: {{ section.settings.background_color }};
     color: {{ section.settings.text_color }};
+  }
+
+  .sentiment-slider .glass-ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sentiment-slider .glass-ambient-orb--1 {
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, #f3d4a0 0%, #e2b472 100%);
+    top: -50px;
+    left: 10%;
+  }
+
+  .sentiment-slider .glass-ambient-orb--2 {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, #e6c587 0%, #c69a47 100%);
+    bottom: -80px;
+    right: 15%;
+  }
+
+  .sentiment-slider .glass-ambient-orb--3 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, #f5e1bd 0%, #d4af37 100%);
+    top: 25%;
+    left: 55%;
+  }
+
+  .sentiment-slider--{{ section.id }} .page-width {
+    position: relative;
+    z-index: 2;
   }
 
   .sentiment-slider--{{ section.id }} .sentiment-slider__title {
@@ -48,9 +88,42 @@
     opacity: 0.95;
     font-weight: 450;
   }
+
+  /* Frosted Glassmorphism Card Effect (Exact like reference image) */
+  .sentiment-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
+    backdrop-filter: blur(25px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+    border-radius: 24px !important;
+    padding: 1.4rem 1.4rem 2rem 1.4rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.65) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 0 0 1.5px rgba(198, 154, 71, 0.4) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sentiment-card:hover {
+    transform: translateY(-10px) scale(1.03) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+    backdrop-filter: blur(30px) saturate(220%) !important;
+    -webkit-backdrop-filter: blur(30px) saturate(220%) !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 25px 50px rgba(198, 154, 71, 0.28), inset 0 1px 3px rgba(255, 255, 255, 1), 0 0 0 2px #c69a47 !important;
+    z-index: 10;
+  }
 {%- endstyle -%}
 
 <div class="sentiment-slider sentiment-slider--{{ section.id }} section-{{ section.id }}-padding {{ section.settings.visibility }}">
+  <div class="glass-ambient-orb glass-ambient-orb--1"></div>
+  <div class="glass-ambient-orb glass-ambient-orb--2"></div>
+  <div class="glass-ambient-orb glass-ambient-orb--3"></div>
   <div class="page-width">
     
     {% comment %} Section Header {% endcomment %}
