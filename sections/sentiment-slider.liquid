@@ -205,12 +205,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: {{ section.settings.card_bg_color | default: "#ffffff" }};
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     border-radius: 20px;
     padding: 1.4rem 1.4rem 2rem 1.4rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border: 1.5px solid {{ section.settings.card_border_color | default: section.settings.accent_color }};
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
+    border: 1.5px solid {{ section.settings.card_border_color | default: section.settings.accent_color | default: "#c69a47" }};
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
     cursor: pointer;
     box-sizing: border-box;
     height: 100%;
@@ -218,7 +220,10 @@
 
   .sentiment-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 40px rgba(198, 154, 71, 0.25);
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(20px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+    box-shadow: 0 20px 45px rgba(198, 154, 71, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.85) !important;
     border-color: {{ section.settings.accent_color | default: "#c69a47" }};
     z-index: 10;
   }
