@@ -75,12 +75,15 @@
 
     {% comment %} Splide Component Slider {% endcomment %}
     <splide-component
-      data-type="slide"
+      data-type="{% if section.settings.autoplay %}loop{% else %}slide{% endif %}"
+      data-autoplay="{{ section.settings.autoplay }}"
+      data-autoplay-speed="{{ section.settings.autoplay_speed }}"
       data-slides-desktop="{{ section.settings.columns_desktop }}"
       data-slides-mobile="{{ section.settings.columns_mobile }}"
       data-gap-desktop="24"
       data-gap-mobile="15"
       data-side-padding-mobile="15"
+      data-drag="true"
     >
       <div class="splide splide--desktop-arrows-outside splide--mobile-arrows-none">
         <div class="splide__track">
@@ -188,6 +191,11 @@
     padding-bottom: 24px !important;
     margin-top: -16px !important;
     margin-bottom: -24px !important;
+    cursor: grab;
+  }
+
+  .sentiment-slider .splide__track:active {
+    cursor: grabbing;
   }
 
   .sentiment-card {
@@ -353,6 +361,26 @@
       "unit": "rem",
       "label": "Card Subtitle Size",
       "default": 1.6
+    },
+    {
+      "type": "header",
+      "content": "Autoplay & Slider Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Autoplay (Auto-rotate slides)",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "default": 3,
+      "unit": "sec",
+      "label": "Autoplay Speed (Seconds)"
     },
     {
       "type": "header",
