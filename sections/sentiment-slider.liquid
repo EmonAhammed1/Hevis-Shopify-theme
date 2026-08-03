@@ -186,11 +186,20 @@
     justify-content: center;
   }
 
+  .sentiment-slider .splide {
+    overflow: visible !important;
+  }
+
   .sentiment-slider .splide__track {
     padding-top: 16px !important;
     padding-bottom: 24px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
     margin-top: -16px !important;
     margin-bottom: -24px !important;
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+    overflow: visible !important;
     cursor: grab;
   }
 
@@ -205,8 +214,8 @@
     background-color: {{ section.settings.card_bg_color | default: "#ffffff" }};
     border-radius: 20px;
     padding: 1.4rem 1.4rem 2rem 1.4rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    border: 1.5px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1.5px solid {{ section.settings.card_border_color | default: section.settings.accent_color }};
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
     cursor: pointer;
     box-sizing: border-box;
@@ -217,7 +226,7 @@
     transform: translateY(-8px) scale(1.03);
     box-shadow: 0 16px 40px rgba(198, 154, 71, 0.25);
     border-color: {{ section.settings.accent_color | default: "#c69a47" }};
-    z-index: 5;
+    z-index: 10;
   }
 
   .sentiment-card__link {
