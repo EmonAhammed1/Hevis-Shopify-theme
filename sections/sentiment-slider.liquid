@@ -98,23 +98,38 @@
   }
 
   /* Prevent side/top clipping when hovered card grows */
-  .sentiment-slider .splide,
-  .sentiment-slider .splide__track {
-    overflow: visible !important;
-    padding-top: 15px !important;
-    padding-bottom: 25px !important;
+  .sentiment-slider .page-width {
+    overflow: hidden !important;
+    position: relative;
+    z-index: 2;
   }
 
-  .sentiment-slider .splide__list {
+  .sentiment-slider .splide__track {
+    overflow: visible !important;
+    position: relative;
+    padding-top: 15px !important;
+    padding-bottom: 25px !important;
     cursor: grab;
   }
 
-  .sentiment-slider .splide__list:active {
+  .sentiment-slider .splide__track:active {
     cursor: grabbing;
+  }
+
+  .sentiment-slider .splide__list {
+    display: flex !important;
+    gap: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    will-change: transform;
+    width: max-content !important;
   }
 
   /* Frosted Glassmorphism Card Effect & Hover Grow */
   .sentiment-card {
+    width: 280px !important;
+    flex-shrink: 0 !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,7 +143,6 @@
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease !important;
     cursor: pointer;
     box-sizing: border-box;
-    height: 100%;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -171,22 +185,11 @@
       </div>
     {%- endif -%}
 
-    {% comment %} Splide Component Slider {% endcomment %}
-    <splide-component
-      data-type="loop"
-      data-autoplay="true"
-      data-autoplay-speed="{{ section.settings.autoplay_speed }}"
-      data-slides-desktop="{{ section.settings.columns_desktop }}"
-      data-slides-mobile="{{ section.settings.columns_mobile }}"
-      data-gap-desktop="24"
-      data-gap-mobile="15"
-      data-side-padding-mobile="15"
-      data-drag="true"
-      data-pause-on-hover="true"
-    >
+    {% comment %} Continuous Non-stop Smooth Marquee Ticker Slider {% endcomment %}
+    <div class="sentiment-slider__marquee-container">
       <div class="splide">
         <div class="splide__track">
-          <ul class="splide__list" style="display: flex; margin: 0; padding: 0; list-style: none;">
+          <ul class="splide__list">
             {%- for block in section.blocks -%}
               <li class="splide__slide sentiment-card" {{ block.shopify_attributes }}>
                 <a href="{{ block.settings.link | default: routes.all_products_collection_url }}" class="sentiment-card__link">
@@ -232,61 +235,126 @@
           </ul>
         </div>
       </div>
-    </splide-component>
+    </div>
 
   </div>
 </div>
 
 <script>
   (function() {
-    function setupSmoothAutoSlider() {
-      const sliderComponent = document.querySelector('.sentiment-slider--{{ section.id }} splide-component');
-      if (!sliderComponent) return;
+    function initContinuousMarqueeEngine() {
+      const section = document.querySelector('.sentiment-slider--{{ section.id }}');
+      if (!section) return;
 
-      const splideElement = sliderComponent.querySelector('.splide');
-      if (!splideElement) return;
+      const track = section.querySelector('.splide__track');
+      const list = section.querySelector('.splide__list');
+      if (!track || !list) return;
 
-      function configure() {
-        if (splideElement.splide) {
-          const splide = splideElement.splide;
-          splide.options = {
-            ...splide.options,
-            type: 'loop',
-            autoplay: true,
-            interval: 2200,
-            speed: 1200,
-            easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
-            pauseOnHover: true,
-            pauseOnFocus: true,
-            drag: true,
-            arrows: false,
-            pagination: false
-          };
-          splide.refresh();
-
-          splideElement.addEventListener('mouseenter', function() {
-            if (splide.Components && splide.Components.Autoplay) {
-              splide.Components.Autoplay.pause();
-            }
-          });
-
-          splideElement.addEventListener('mouseleave', function() {
-            if (splide.Components && splide.Components.Autoplay) {
-              splide.Components.Autoplay.play();
-            }
-          });
-        } else {
-          setTimeout(configure, 150);
-        }
+      // Duplicate cards to guarantee 100% infinite seamless continuous loop
+      if (!list.dataset.cloned) {
+        list.dataset.cloned = 'true';
+        const originalCards = Array.from(list.children);
+        // Duplicate twice for ultra smooth scrolling on wide screens
+        originalCards.forEach(card => {
+          list.appendChild(card.cloneNode(true));
+        });
+        originalCards.forEach(card => {
+          list.appendChild(card.cloneNode(true));
+        });
       }
 
-      configure();
+      let currentX = 0;
+      let isPaused = false;
+      let isDragging = false;
+      let startX = 0;
+      let dragStartX = 0;
+      let animationFrameId = null;
+
+      // Speed: 0.75px per frame for silky smooth non-stop continuous gliding right-to-left
+      const speed = 0.85;
+
+      function step() {
+        if (!isPaused && !isDragging) {
+          currentX -= speed;
+          // Calculate loop boundary (1/3 of total width since cloned twice)
+          const loopBoundary = list.scrollWidth / 3;
+          if (Math.abs(currentX) >= loopBoundary) {
+            currentX += loopBoundary;
+          }
+          list.style.transform = 'translate3d(' + currentX + 'px, 0, 0)';
+        }
+        animationFrameId = requestAnimationFrame(step);
+      }
+
+      // Mouse hover pause & card grow
+      section.addEventListener('mouseenter', function() {
+        isPaused = true;
+      });
+
+      section.addEventListener('mouseleave', function() {
+        if (!isDragging) {
+          isPaused = false;
+        }
+      });
+
+      // Mouse drag support
+      track.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        isPaused = true;
+        startX = e.pageX;
+        dragStartX = currentX;
+        track.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        const diff = e.pageX - startX;
+        currentX = dragStartX + diff;
+        list.style.transform = 'translate3d(' + currentX + 'px, 0, 0)';
+      });
+
+      window.addEventListener('mouseup', function() {
+        if (isDragging) {
+          isDragging = false;
+          track.style.cursor = 'grab';
+          setTimeout(function() {
+            isPaused = false;
+          }, 400);
+        }
+      });
+
+      // Touch swipe support for mobile devices
+      track.addEventListener('touchstart', function(e) {
+        isDragging = true;
+        isPaused = true;
+        startX = e.touches[0].pageX;
+        dragStartX = currentX;
+      }, { passive: true });
+
+      track.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        const diff = e.touches[0].pageX - startX;
+        currentX = dragStartX + diff;
+        list.style.transform = 'translate3d(' + currentX + 'px, 0, 0)';
+      }, { passive: true });
+
+      track.addEventListener('touchend', function() {
+        isDragging = false;
+        setTimeout(function() {
+          isPaused = false;
+        }, 400);
+      });
+
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      animationFrameId = requestAnimationFrame(step);
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupSmoothAutoSlider);
+      document.addEventListener('DOMContentLoaded', initContinuousMarqueeEngine);
     } else {
-      setupSmoothAutoSlider();
+      initContinuousMarqueeEngine();
     }
   })();
 </script>
