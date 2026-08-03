@@ -190,6 +190,94 @@
         "custom_cards_colors_text": "#ffffff"
       }
     },
+    "feature_icon_bar_section": {
+      "type": "feature-icon-bar",
+      "blocks": {
+        "feature_1": {
+          "type": "feature_item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/diamond.png",
+            "icon": "diamond",
+            "title": "Dazzling Diamond",
+            "subtitle": "Brilliant & Elegant",
+            "link": ""
+          }
+        },
+        "feature_2": {
+          "type": "feature_item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/gift-box.png",
+            "icon": "card_giftcard",
+            "title": "Luxury Gift Box",
+            "subtitle": "Ready to Impress",
+            "link": ""
+          }
+        },
+        "feature_3": {
+          "type": "feature_item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/email.png",
+            "icon": "mail",
+            "title": "Heartfelt Message Card",
+            "subtitle": "Included Inside",
+            "link": ""
+          }
+        },
+        "feature_4": {
+          "type": "feature_item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/shield_1.png",
+            "icon": "shield",
+            "title": "Tarnish Resistant",
+            "subtitle": "Built to Last",
+            "link": ""
+          }
+        },
+        "feature_5": {
+          "type": "feature_item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/medal.png",
+            "icon": "verified",
+            "title": "Satisfaction Guarantee",
+            "subtitle": "30-Day Promise",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4",
+        "feature_5"
+      ],
+      "settings": {
+        "title": "MADE TO CELEBRATE LOVE",
+        "heading_size": "h1",
+        "title_alignment": "center",
+        "show_underline": true,
+        "underline_color": "#dfb256",
+        "description": "",
+        "title_font_size": 2.6,
+        "subtitle_font_size": 1.4,
+        "icon_size_desktop": 60,
+        "icon_size_mobile": 44,
+        "columns_desktop": 5,
+        "mobile_layout": "2",
+        "full_width": false,
+        "show_dividers": true,
+        "divider_color": "#00000014",
+        "color_scheme": "custom",
+        "custom_colors_background": "#faf7f2",
+        "custom_gradient_background": "",
+        "custom_colors_text": "#2b261f",
+        "subtitle_color": "#666055",
+        "icon_color": "#a67c42",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "visibility": "always-display"
+      }
+    },
     "d2d3417b-e92f-428c-b221-5bceffb552be": {
       "type": "comparison-table",
       "blocks": {
@@ -433,82 +521,6 @@
         "custom_colors_text": "#2e2a39",
         "custom_colors_solid_button_background": "#dd1d1d",
         "custom_colors_solid_button_text": "#ffffff"
-      }
-    },
-    "feature_icon_bar_section": {
-      "type": "feature-icon-bar",
-      "blocks": {
-        "feature_1": {
-          "type": "feature_item",
-          "settings": {
-            "icon": "diamond",
-            "title": "Dazzling Diamond",
-            "subtitle": "Brilliant & Elegant"
-          }
-        },
-        "feature_2": {
-          "type": "feature_item",
-          "settings": {
-            "icon": "card_giftcard",
-            "title": "Luxury Gift Box",
-            "subtitle": "Ready to Impress"
-          }
-        },
-        "feature_3": {
-          "type": "feature_item",
-          "settings": {
-            "icon": "mail",
-            "title": "Heartfelt Message Card",
-            "subtitle": "Included Inside"
-          }
-        },
-        "feature_4": {
-          "type": "feature_item",
-          "settings": {
-            "icon": "shield",
-            "title": "Tarnish Resistant",
-            "subtitle": "Built to Last"
-          }
-        },
-        "feature_5": {
-          "type": "feature_item",
-          "settings": {
-            "icon": "verified",
-            "title": "Satisfaction Guarantee",
-            "subtitle": "30-Day Promise"
-          }
-        }
-      },
-      "block_order": [
-        "feature_1",
-        "feature_2",
-        "feature_3",
-        "feature_4",
-        "feature_5"
-      ],
-      "settings": {
-        "title": "MADE TO CELEBRATE LOVE",
-        "heading_size": "h1",
-        "title_alignment": "center",
-        "show_underline": true,
-        "underline_color": "#dfb256",
-        "title_font_size": 1.8,
-        "subtitle_font_size": 1.4,
-        "columns_desktop": 5,
-        "mobile_layout": "2",
-        "full_width": false,
-        "show_dividers": true,
-        "divider_color": "rgba(0, 0, 0, 0.08)",
-        "color_scheme": "custom",
-        "custom_colors_background": "#faf7f2",
-        "custom_colors_text": "#2b261f",
-        "subtitle_color": "#666055",
-        "icon_color": "#a67c42",
-        "icon_size_desktop": 56,
-        "icon_size_mobile": 44,
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "visibility": "always-display"
       }
     }
   },

@@ -37,7 +37,7 @@
   .feature-icon-bar--{{ section.id }} .feature-icon-bar__item-title {
     font-family: var(--font-heading-family);
     font-style: var(--font-heading-style);
-    font-weight: 600;
+    font-weight: var(--font-heading-weight);
     font-size: {{ section.settings.title_font_size }}rem;
     color: inherit;
   }
@@ -101,7 +101,8 @@
       </div>
     {%- endif -%}
 
-    <div class="feature-icon-bar__grid feature-icon-bar__grid--desktop-{{ section.settings.columns_desktop }} feature-icon-bar__grid--mobile-{{ section.settings.mobile_layout }}">
+    {% comment %} DESKTOP GRID (Exact Original) {% endcomment %}
+    <div class="feature-icon-bar__grid feature-icon-bar__grid--desktop-{{ section.settings.columns_desktop }} feature-icon-bar__desktop-only">
       {%- for block in section.blocks -%}
         <div class="feature-icon-bar__item text-center" {{ block.shopify_attributes }}>
           {%- if block.settings.link != blank -%}
@@ -146,6 +147,70 @@
         </div>
       {%- endfor -%}
     </div>
+
+    {% comment %} MOBILE SLIDER {% endcomment %}
+    <splide-component
+      class="feature-icon-bar__mobile-only"
+      data-type="slide"
+      data-slides-mobile="{% if section.settings.mobile_layout == '1' %}1{% else %}2{% endif %}"
+      data-gap-mobile="15"
+      data-side-padding-mobile="15"
+      data-destroy-desktop="true"
+    >
+      <div class="splide splide--mobile-dots-bottom splide--mobile-arrows-none">
+        <div class="splide__track">
+          <ul class="splide__list" style="margin: 0; padding: 0; list-style: none;">
+            {%- for block in section.blocks -%}
+              <li class="splide__slide feature-icon-bar__item text-center" {{ block.shopify_attributes }}>
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="feature-icon-bar__link">
+                {%- endif -%}
+
+                <div class="feature-icon-bar__icon-wrapper">
+                  <div class="feature-icon-bar__icon">
+                    {%- if block.settings.custom_icon != blank -%}
+                      <img
+                        src="{{ block.settings.custom_icon | image_url: width: 300 }}"
+                        alt="{{ block.settings.custom_icon.alt | default: block.settings.title | escape }}"
+                        loading="lazy"
+                        width="{{ block.settings.custom_icon.width }}"
+                        height="{{ block.settings.custom_icon.height }}"
+                      >
+                    {%- elsif block.settings.icon != blank -%}
+                      {% render 'material-icon', icon: block.settings.icon, filled: false %}
+                    {%- else -%}
+                      {% render 'material-icon', icon: 'stars', filled: false %}
+                    {%- endif -%}
+                  </div>
+                </div>
+
+                <div class="feature-icon-bar__content">
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="feature-icon-bar__item-title">
+                      {{ block.settings.title | escape }}
+                    </h3>
+                  {%- endif -%}
+
+                  {%- if block.settings.subtitle != blank -%}
+                    <p class="feature-icon-bar__item-subtitle">
+                      {{ block.settings.subtitle | escape }}
+                    </p>
+                  {%- endif -%}
+                </div>
+
+                {%- if block.settings.link != blank -%}
+                  </a>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        <div class="splide__dots-and-arrows" style="margin-top: 2rem;">
+          <ul class="splide__pagination"></ul>
+          <div class="splide__arrows"></div>
+        </div>
+      </div>
+    </splide-component>
   </div>
 </div>
 
@@ -182,6 +247,18 @@
     border-radius: 2px;
   }
 
+  @media screen and (min-width: 750px) {
+    .feature-icon-bar--{{ section.id }} .feature-icon-bar__mobile-only {
+      display: none !important;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .feature-icon-bar--{{ section.id }} .feature-icon-bar__desktop-only {
+      display: none !important;
+    }
+  }
+
   .feature-icon-bar__grid {
     display: grid;
     width: 100%;
@@ -198,19 +275,8 @@
   }
 
   @media screen and (max-width: 749px) {
-    .feature-icon-bar__grid--mobile-1 { grid-template-columns: 1fr; row-gap: 2.5rem; }
-    .feature-icon-bar__grid--mobile-2 { grid-template-columns: repeat(2, 1fr); gap: 2.2rem 1rem; }
-    .feature-icon-bar__grid--mobile-scroll {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 1.5rem;
-      padding-bottom: 1rem;
-      -webkit-overflow-scrolling: touch;
-    }
-    .feature-icon-bar__grid--mobile-scroll .feature-icon-bar__item {
-      flex: 0 0 75%;
-      scroll-snap-align: center;
+    .feature-icon-bar__item {
+      padding: 1rem;
     }
   }
 
@@ -333,21 +399,21 @@
       "type": "range",
       "id": "title_font_size",
       "min": 1.2,
-      "max": 3.0,
+      "max": 5.0,
       "step": 0.1,
       "unit": "rem",
       "label": "Feature Item Title Font Size",
-      "default": 1.8
+      "default": 2.4
     },
     {
       "type": "range",
       "id": "subtitle_font_size",
       "min": 1.0,
-      "max": 2.2,
+      "max": 3.0,
       "step": 0.1,
       "unit": "rem",
       "label": "Feature Item Subtitle Font Size",
-      "default": 1.4
+      "default": 1.6
     },
     {
       "type": "header",
@@ -357,21 +423,21 @@
       "type": "range",
       "id": "icon_size_desktop",
       "min": 32,
-      "max": 120,
+      "max": 160,
       "step": 4,
       "unit": "px",
       "label": "Icon Size (Desktop)",
-      "default": 56
+      "default": 72
     },
     {
       "type": "range",
       "id": "icon_size_mobile",
       "min": 24,
-      "max": 80,
+      "max": 120,
       "step": 4,
       "unit": "px",
       "label": "Icon Size (Mobile)",
-      "default": 44
+      "default": 56
     },
     {
       "type": "header",
