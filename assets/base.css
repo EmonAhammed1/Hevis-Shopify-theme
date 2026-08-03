@@ -605,16 +605,31 @@ sticky-header {
 }
 
 /* Single Product Page Light Background & High Contrast Text */
-body.template-product,
+html,
+body,
+main#MainContent,
+.template-product,
 .template-product main,
 .template-product #MainContent,
 .template-product .product-section,
 .template-product [id^="MainProduct-"],
-.template-product .product {
+.template-product .product,
+.template-product .grid__item,
+.template-product .product__info-container,
+.template-product .product__info-wrapper,
+.template-product .product__media-wrapper {
   background-color: #faf7f2 !important;
+  background: #faf7f2 !important;
   color: #1a1612 !important;
 }
 
+.template-product h1,
+.template-product h2,
+.template-product h3,
+.template-product h4,
+.template-product p,
+.template-product span,
+.template-product label,
 .template-product .product__title,
 .template-product .product__title h1,
 .template-product .product-title,
