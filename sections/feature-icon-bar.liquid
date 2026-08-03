@@ -11,15 +11,23 @@
     }
   }
 
+  .color-scheme-{{ section.id }}.color-custom {
+    --color-background: {{ section.settings.custom_colors_background.red }}, {{ section.settings.custom_colors_background.green }}, {{ section.settings.custom_colors_background.blue }};
+    --gradient-background: {% if section.settings.custom_gradient_background != blank %}{{ section.settings.custom_gradient_background }}{% else %}{{ section.settings.custom_colors_background }}{% endif %};
+    --color-foreground: {{ section.settings.custom_colors_text.red }}, {{ section.settings.custom_colors_text.green }}, {{ section.settings.custom_colors_text.blue }};
+  }
+
   .feature-icon-bar--{{ section.id }} {
-    background-color: {{ section.settings.bg_color }};
-    color: {{ section.settings.text_color }};
+    background: var(--gradient-background, var(--color-background));
+    color: var(--color-foreground);
   }
 
   .feature-icon-bar--{{ section.id }} .feature-icon-bar__title {
-    color: {{ section.settings.text_color }};
-    font-family: {% if section.settings.heading_font == 'serif' %}Georgia, "Times New Roman", serif{% else %}inherit{% endif %};
-    letter-spacing: 0.12em;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    letter-spacing: 0.08em;
+    color: inherit;
   }
 
   .feature-icon-bar--{{ section.id }} .feature-icon-bar__title-underline {
@@ -27,10 +35,16 @@
   }
 
   .feature-icon-bar--{{ section.id }} .feature-icon-bar__item-title {
-    color: {{ section.settings.text_color }};
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: 600;
+    font-size: {{ section.settings.title_font_size }}rem;
+    color: inherit;
   }
 
   .feature-icon-bar--{{ section.id }} .feature-icon-bar__item-subtitle {
+    font-family: var(--font-body-family);
+    font-size: {{ section.settings.subtitle_font_size }}rem;
     color: {{ section.settings.subtitle_color }};
   }
 
@@ -60,14 +74,20 @@
       width: {{ section.settings.icon_size_mobile }}px;
       height: {{ section.settings.icon_size_mobile }}px;
     }
+    .feature-icon-bar--{{ section.id }} .feature-icon-bar__item-title {
+      font-size: {{ section.settings.title_font_size | times: 0.88 }}rem;
+    }
+    .feature-icon-bar--{{ section.id }} .feature-icon-bar__item-subtitle {
+      font-size: {{ section.settings.subtitle_font_size | times: 0.9 }}rem;
+    }
   }
 {%- endstyle -%}
 
-<div class="feature-icon-bar feature-icon-bar--{{ section.id }} section-{{ section.id }}-padding {{ section.settings.visibility }}">
+<div class="color-scheme-{{ section.id }} color-{{ section.settings.color_scheme }} gradient feature-icon-bar feature-icon-bar--{{ section.id }} section-{{ section.id }}-padding {{ section.settings.visibility }}">
   <div class="{% if section.settings.full_width %}full-width{% else %}page-width{% endif %}">
     {%- if section.settings.title != blank -%}
       <div class="feature-icon-bar__header text-{{ section.settings.title_alignment }}">
-        <h2 class="feature-icon-bar__title {{ section.settings.heading_size }}">
+        <h2 class="feature-icon-bar__title {{ section.settings.heading_size }} title-with-highlight" style="--hightlight-color: {{ section.settings.underline_color }}">
           {{ section.settings.title | escape }}
         </h2>
         {%- if section.settings.show_underline -%}
@@ -136,7 +156,7 @@
   }
 
   .feature-icon-bar__header {
-    margin-bottom: 3.5rem;
+    margin-bottom: 3.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -153,15 +173,12 @@
   .feature-icon-bar__title {
     margin: 0 0 1rem 0;
     text-transform: uppercase;
-    font-weight: 600;
-    font-size: 2.2rem;
-    line-height: 1.3;
   }
 
   .feature-icon-bar__title-underline {
-    width: 60px;
+    width: 70px;
     height: 2px;
-    margin-top: 0.2rem;
+    margin-top: 0.4rem;
     border-radius: 2px;
   }
 
@@ -182,7 +199,7 @@
 
   @media screen and (max-width: 749px) {
     .feature-icon-bar__grid--mobile-1 { grid-template-columns: 1fr; row-gap: 2.5rem; }
-    .feature-icon-bar__grid--mobile-2 { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+    .feature-icon-bar__grid--mobile-2 { grid-template-columns: repeat(2, 1fr); gap: 2.2rem 1rem; }
     .feature-icon-bar__grid--mobile-scroll {
       display: flex;
       overflow-x: auto;
@@ -198,7 +215,7 @@
   }
 
   .feature-icon-bar__item {
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -207,7 +224,7 @@
   }
 
   .feature-icon-bar__item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
   }
 
   .feature-icon-bar__link {
@@ -220,7 +237,7 @@
   }
 
   .feature-icon-bar__icon-wrapper {
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -238,17 +255,15 @@
   }
 
   .feature-icon-bar__item-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 0.4rem 0;
-    line-height: 1.3;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
   }
 
   .feature-icon-bar__item-subtitle {
-    font-size: 1.25rem;
     margin: 0;
     opacity: 0.85;
-    line-height: 1.4;
+    line-height: 1.45;
   }
 </style>
 
@@ -273,22 +288,12 @@
     },
     {
       "type": "select",
-      "id": "heading_font",
-      "label": "Heading Font Style",
-      "options": [
-        { "value": "serif", "label": "Serif / Luxury Elegance" },
-        { "value": "sans", "label": "Sans-Serif Standard" }
-      ],
-      "default": "serif"
-    },
-    {
-      "type": "select",
       "id": "heading_size",
       "label": "Heading Size",
       "options": [
         { "value": "h2", "label": "Small" },
         { "value": "h1", "label": "Medium" },
-        { "value": "h0", "label": "Large" }
+        { "value": "h0", "label": "Large (Hero Style)" }
       ],
       "default": "h1"
     },
@@ -319,6 +324,54 @@
       "type": "richtext",
       "id": "description",
       "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Typography & Font Sizes"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 1.2,
+      "max": 3.0,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Feature Item Title Font Size",
+      "default": 1.85
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "min": 1.0,
+      "max": 2.2,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Feature Item Subtitle Font Size",
+      "default": 1.45
+    },
+    {
+      "type": "header",
+      "content": "Icon Sizing"
+    },
+    {
+      "type": "range",
+      "id": "icon_size_desktop",
+      "min": 32,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Icon Size (Desktop)",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Icon Size (Mobile)",
+      "default": 44
     },
     {
       "type": "header",
@@ -364,18 +417,37 @@
     },
     {
       "type": "header",
-      "content": "Colors & Customization"
+      "content": "Color Scheme & Theme Styling"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "accent-1", "label": "Accent 1" },
+        { "value": "accent-2", "label": "Accent 2" },
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" },
+        { "value": "inverse", "label": "Inverse" },
+        { "value": "custom", "label": "Custom Colors" }
+      ],
+      "default": "custom",
+      "label": "Color Scheme"
     },
     {
       "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
+      "id": "custom_colors_background",
+      "label": "Custom Background Color",
       "default": "#faf7f2"
     },
     {
+      "type": "color_background",
+      "id": "custom_gradient_background",
+      "label": "Custom Gradient Background"
+    },
+    {
       "type": "color",
-      "id": "text_color",
-      "label": "Heading & Text Color",
+      "id": "custom_colors_text",
+      "label": "Custom Text Color",
       "default": "#2b261f"
     },
     {
@@ -392,30 +464,6 @@
     },
     {
       "type": "header",
-      "content": "Icon Settings"
-    },
-    {
-      "type": "range",
-      "id": "icon_size_desktop",
-      "min": 24,
-      "max": 80,
-      "step": 2,
-      "unit": "px",
-      "label": "Icon Size (Desktop)",
-      "default": 44
-    },
-    {
-      "type": "range",
-      "id": "icon_size_mobile",
-      "min": 20,
-      "max": 60,
-      "step": 2,
-      "unit": "px",
-      "label": "Icon Size (Mobile)",
-      "default": 36
-    },
-    {
-      "type": "header",
       "content": "Section Padding"
     },
     {
@@ -426,7 +474,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding Top",
-      "default": 48
+      "default": 56
     },
     {
       "type": "range",
@@ -436,7 +484,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding Bottom",
-      "default": 48
+      "default": 56
     },
     {
       "type": "select",
