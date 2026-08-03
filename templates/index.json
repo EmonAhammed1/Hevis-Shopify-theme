@@ -434,11 +434,86 @@
         "custom_colors_solid_button_background": "#dd1d1d",
         "custom_colors_solid_button_text": "#ffffff"
       }
+    },
+    "feature_icon_bar_section": {
+      "type": "feature-icon-bar",
+      "blocks": {
+        "feature_1": {
+          "type": "feature_item",
+          "settings": {
+            "icon": "diamond",
+            "title": "Dazzling Diamond",
+            "subtitle": "Brilliant & Elegant"
+          }
+        },
+        "feature_2": {
+          "type": "feature_item",
+          "settings": {
+            "icon": "card_giftcard",
+            "title": "Luxury Gift Box",
+            "subtitle": "Ready to Impress"
+          }
+        },
+        "feature_3": {
+          "type": "feature_item",
+          "settings": {
+            "icon": "mail",
+            "title": "Heartfelt Message Card",
+            "subtitle": "Included Inside"
+          }
+        },
+        "feature_4": {
+          "type": "feature_item",
+          "settings": {
+            "icon": "shield",
+            "title": "Tarnish Resistant",
+            "subtitle": "Built to Last"
+          }
+        },
+        "feature_5": {
+          "type": "feature_item",
+          "settings": {
+            "icon": "verified",
+            "title": "Satisfaction Guarantee",
+            "subtitle": "30-Day Promise"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4",
+        "feature_5"
+      ],
+      "settings": {
+        "title": "MADE TO CELEBRATE LOVE",
+        "heading_font": "serif",
+        "heading_size": "h1",
+        "title_alignment": "center",
+        "show_underline": true,
+        "underline_color": "#dfb256",
+        "columns_desktop": 5,
+        "mobile_layout": "2",
+        "full_width": false,
+        "show_dividers": true,
+        "divider_color": "rgba(0, 0, 0, 0.08)",
+        "bg_color": "#faf7f2",
+        "text_color": "#2b261f",
+        "subtitle_color": "#666055",
+        "icon_color": "#a67c42",
+        "icon_size_desktop": 44,
+        "icon_size_mobile": 36,
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "visibility": "always-display"
+      }
     }
   },
   "order": [
     "cfca4268-6358-426c-98ab-d292aeef11e5",
     "6aa09428-a417-429d-9159-a4e8afd49590",
+    "feature_icon_bar_section",
     "d2d3417b-e92f-428c-b221-5bceffb552be",
     "0f1fc9e4-bc4c-4052-9747-62d1f8472caa",
     "contact_form_WHP8G7"
