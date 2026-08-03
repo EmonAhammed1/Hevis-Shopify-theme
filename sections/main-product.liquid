@@ -1,6 +1,6 @@
 <section
   id="MainProduct-{{ section.id }}"
-  class="page-width section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} bg-color-{{ section.id }}"
+  class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} bg-color-{{ section.id }}"
   data-section="{{ section.id }}"
 >
   {%- style -%}
@@ -120,7 +120,7 @@
       assign hide_mobile_slider = true
     endif
   -%}
-  <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+  <div class="page-width product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper{% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %}{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}">
       {% render 'product-media-gallery', variant_images: variant_images, has_filtering: has_filtering %}
     </div>
