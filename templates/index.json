@@ -83,8 +83,8 @@
         "slide_height": "large",
         "slider_visual": "dots",
         "desktop_pagination_position": "over",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
+        "auto_rotate": true,
+        "change_slides_speed": 7,
         "show_text_below": true,
         "mobile_pagination_position": "under",
         "accessibility_info": "Slideshow about our brand"
