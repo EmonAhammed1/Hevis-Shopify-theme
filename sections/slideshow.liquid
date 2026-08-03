@@ -31,8 +31,8 @@
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
   aria-label="{{ section.settings.accessibility_info | escape }}"
 >
-  {%- if section.settings.auto_rotate and section.blocks.size > 1 -%}
-    <div class="slideshow__controls slideshow__controls--top slideshow__controls--desktop-{{ section.settings.desktop_pagination_position }}{% if section.settings.mobile_pagination_position == 'over' and section.settings.show_text_below == false %} slideshow__controls--mobile-over{% endif %} slider-buttons no-js-hidden{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
+  {%- if section.blocks.size > 1 -%}
+    <div class="slideshow__controls slider-buttons no-js-hidden">
       <button
         type="button"
         class="slider-button slider-button--prev"
@@ -79,7 +79,7 @@
       {%- if section.settings.auto_rotate -%}
         <button
           type="button"
-          class="slideshow__autoplay slider-button no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
+          class="slideshow__autoplay no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
           aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
         >
           {%- render 'icon-pause' -%}
@@ -374,11 +374,6 @@
     transition: none !important;
   }
   
-  /* Hide duplicate top controls */
-  fade-slideshow .slideshow__controls--top {
-    display: none !important;
-  }
-
   /* Move arrows to the sides and dots to bottom */
   fade-slideshow .slideshow__controls {
     position: absolute !important;
@@ -393,17 +388,19 @@
     box-shadow: none !important;
     margin: 0 !important;
     padding: 0 !important;
+    display: block !important;
   }
-  fade-slideshow .slideshow__controls .slider-button {
+  fade-slideshow .slideshow__controls .slider-button--prev,
+  fade-slideshow .slideshow__controls .slider-button--next {
     position: absolute !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     pointer-events: auto !important;
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
     color: white !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
     width: 48px !important;
     height: 48px !important;
     border-radius: 50% !important;
@@ -411,15 +408,18 @@
     align-items: center !important;
     justify-content: center !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    z-index: 20 !important;
   }
-  fade-slideshow .slideshow__controls .slider-button svg {
+  fade-slideshow .slideshow__controls .slider-button--prev svg,
+  fade-slideshow .slideshow__controls .slider-button--next svg {
     width: 20px !important;
     height: 20px !important;
     fill: currentColor !important;
   }
-  fade-slideshow .slideshow__controls .slider-button:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
+  fade-slideshow .slideshow__controls .slider-button--prev:hover,
+  fade-slideshow .slideshow__controls .slider-button--next:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
     transform: translateY(-50%) scale(1.1) !important;
   }
   fade-slideshow .slideshow__controls .slider-button--prev {
@@ -430,10 +430,45 @@
     right: 2rem !important;
     left: auto !important;
   }
+
+  /* Autoplay Pause/Play button position & style */
+  fade-slideshow .slideshow__controls .slideshow__autoplay {
+    position: absolute !important;
+    bottom: 2rem !important;
+    right: 2.5rem !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    background: rgba(12, 11, 16, 0.5) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 25 !important;
+    transition: all 0.3s ease !important;
+  }
+  fade-slideshow .slideshow__controls .slideshow__autoplay:hover {
+    background: rgba(12, 11, 16, 0.85) !important;
+    color: #ffffff !important;
+    transform: scale(1.08) !important;
+  }
+  fade-slideshow .slideshow__controls .slideshow__autoplay svg {
+    width: 14px !important;
+    height: 14px !important;
+    fill: currentColor !important;
+  }
   
   fade-slideshow .slideshow__controls .slider-counter {
     position: absolute !important;
-    bottom: 4.5rem !important; /* Move pagination dots higher up onto the image */
+    bottom: 4.5rem !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     pointer-events: auto !important;
@@ -521,17 +556,21 @@
       if(this.slides.length === 0) return;
       
       this.dots = Array.from(this.querySelectorAll('.slider-counter__link'));
-      // Find the active controls container (exclude top one which is hidden)
-      const controls = Array.from(this.querySelectorAll('.slideshow__controls')).filter(c => !c.classList.contains('slideshow__controls--top'))[0] || this.querySelector('.slideshow__controls');
+      this.controls = this.querySelector('.slideshow__controls');
       
-      this.prevBtn = controls.querySelector('.slider-button--prev');
-      this.nextBtn = controls.querySelector('.slider-button--next');
-      this.autoplayBtn = controls.querySelector('.slideshow__autoplay');
+      if (this.controls) {
+        this.prevBtn = this.controls.querySelector('.slider-button--prev');
+        this.nextBtn = this.controls.querySelector('.slider-button--next');
+        this.autoplayBtn = this.controls.querySelector('.slideshow__autoplay');
+      }
+
       this.slider = this.querySelector('.slideshow');
-      
       this.currentIndex = 0;
-      this.autoRotate = true; // Forced as requested
-      this.changeSpeed = 5000; // Forced to 5 seconds as requested
+      
+      // Read dynamic settings from theme editor
+      this.autoRotate = this.slider ? this.slider.dataset.autoplay === 'true' : true;
+      const speedInSeconds = this.slider ? parseInt(this.slider.dataset.speed, 10) : 5;
+      this.changeSpeed = (isNaN(speedInSeconds) || speedInSeconds <= 0 ? 5 : speedInSeconds) * 1000;
       this.interval = null;
 
       this.init();
@@ -567,20 +606,23 @@
 
       if (this.autoRotate) {
         this.play();
-        this.slider.addEventListener('mouseenter', () => this.pause());
-        this.slider.addEventListener('mouseleave', () => this.play());
-        
-        if (this.autoplayBtn) {
-          this.autoplayBtn.addEventListener('click', () => {
-            if (this.interval) {
-              this.pause();
-              this.autoplayBtn.classList.add('slideshow__autoplay--paused');
-            } else {
-              this.play();
-              this.autoplayBtn.classList.remove('slideshow__autoplay--paused');
-            }
-          });
+        if (this.slider) {
+          this.slider.addEventListener('mouseenter', () => this.pause());
+          this.slider.addEventListener('mouseleave', () => this.play());
         }
+      }
+
+      if (this.autoplayBtn) {
+        this.autoplayBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (this.interval) {
+            this.pause();
+            this.autoplayBtn.classList.add('slideshow__autoplay--paused');
+          } else {
+            this.play();
+            this.autoplayBtn.classList.remove('slideshow__autoplay--paused');
+          }
+        });
       }
 
       // Touch Swipe (Mobile) & Mouse Drag (Desktop) Implementation
