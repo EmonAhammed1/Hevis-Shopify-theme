@@ -1,6 +1,6 @@
 <section
   id="MainProduct-{{ section.id }}"
-  class="page-width section-{{ section.id }}-padding"
+  class="page-width section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} bg-color-{{ section.id }}"
   data-section="{{ section.id }}"
 >
   {%- style -%}
@@ -15,6 +15,30 @@
         padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
       }
     }
+
+    .bg-color-{{ section.id }}.color-custom {
+      --color-background: {{ section.settings.custom_background_color.red }}, {{ section.settings.custom_background_color.green }}, {{ section.settings.custom_background_color.blue }};
+    }
+    {% if section.settings.color_scheme == 'custom' and section.settings.custom_background_color != blank and section.settings.custom_background_color != 'rgba(0,0,0,0)' %}
+      #MainProduct-{{ section.id }} {
+        background-color: {{ section.settings.custom_background_color }} !important;
+      }
+    {% endif %}
+    {% if section.settings.color_scheme == 'custom' and section.settings.custom_text_color != blank and section.settings.custom_text_color != 'rgba(0,0,0,0)' %}
+      #MainProduct-{{ section.id }} {
+        color: {{ section.settings.custom_text_color }} !important;
+      }
+      #MainProduct-{{ section.id }} h1,
+      #MainProduct-{{ section.id }} h2,
+      #MainProduct-{{ section.id }} h3,
+      #MainProduct-{{ section.id }} p,
+      #MainProduct-{{ section.id }} span,
+      #MainProduct-{{ section.id }} label,
+      #MainProduct-{{ section.id }} .product__title,
+      #MainProduct-{{ section.id }} .price-item {
+        color: {{ section.settings.custom_text_color }} !important;
+      }
+    {% endif %}
 
     #MediaGallery-{{ section.id }} {
       --desktop-thumbnails: {{ section.settings.desktop_thumbnails_count }};
@@ -9994,6 +10018,52 @@
       "unit": "px",
       "label": "Bottom padding",
       "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Section Colors"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "Accent 1"
+        },
+        {
+          "value": "accent-2",
+          "label": "Accent 2"
+        },
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "color",
+      "id": "custom_background_color",
+      "label": "Custom section background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Custom section text color"
     }
   ]
 }
