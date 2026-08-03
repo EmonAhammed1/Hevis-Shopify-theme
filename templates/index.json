@@ -339,6 +339,63 @@
         "visibility": "always-display"
       }
     },
+    "sentiment_slider_section": {
+      "type": "sentiment-slider",
+      "blocks": {
+        "card_1": {
+          "type": "sentiment_card",
+          "settings": {
+            "title": "For Your Wife",
+            "subtitle": "Celebrate your forever love",
+            "link": ""
+          }
+        },
+        "card_2": {
+          "type": "sentiment_card",
+          "settings": {
+            "title": "For Your Girlfriend",
+            "subtitle": "A gift she'll cherish",
+            "link": ""
+          }
+        },
+        "card_3": {
+          "type": "sentiment_card",
+          "settings": {
+            "title": "For Your Mom",
+            "subtitle": "Thank her for everything",
+            "link": ""
+          }
+        },
+        "card_4": {
+          "type": "sentiment_card",
+          "settings": {
+            "title": "Birthday Gifts",
+            "subtitle": "Make her day extra special",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "settings": {
+        "title": "SHOP BY SENTIMENT",
+        "heading_size": "h1",
+        "show_divider": true,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "background_color": "#faf7f2",
+        "heading_color": "#1a1612",
+        "subtitle_color": "#666055",
+        "accent_color": "#b88628",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "visibility": "always-display"
+      }
+    },
     "d2d3417b-e92f-428c-b221-5bceffb552be": {
       "type": "comparison-table",
       "blocks": {
@@ -590,6 +647,7 @@
     "6aa09428-a417-429d-9159-a4e8afd49590",
     "feature_icon_bar_section",
     "product_highlight_features_section",
+    "sentiment_slider_section",
     "d2d3417b-e92f-428c-b221-5bceffb552be",
     "0f1fc9e4-bc4c-4052-9747-62d1f8472caa",
     "contact_form_WHP8G7"
