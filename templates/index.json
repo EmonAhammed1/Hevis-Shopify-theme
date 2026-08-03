@@ -347,7 +347,7 @@
           "settings": {
             "title": "For Your Wife",
             "subtitle": "Celebrate your forever love",
-            "link": ""
+            "link": "/collections/all"
           }
         },
         "card_2": {
@@ -355,7 +355,7 @@
           "settings": {
             "title": "For Your Girlfriend",
             "subtitle": "A gift she'll cherish",
-            "link": ""
+            "link": "/collections/all"
           }
         },
         "card_3": {
@@ -363,7 +363,7 @@
           "settings": {
             "title": "For Your Mom",
             "subtitle": "Thank her for everything",
-            "link": ""
+            "link": "/collections/all"
           }
         },
         "card_4": {
@@ -371,7 +371,7 @@
           "settings": {
             "title": "Birthday Gifts",
             "subtitle": "Make her day extra special",
-            "link": ""
+            "link": "/collections/all"
           }
         }
       },

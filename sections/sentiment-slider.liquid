@@ -90,50 +90,44 @@
           <ul class="splide__list" style="display: flex; margin: 0; padding: 0; list-style: none;">
             {%- for block in section.blocks -%}
               <li class="splide__slide sentiment-card" {{ block.shopify_attributes }}>
-                {%- if block.settings.link != blank -%}
-                  <a href="{{ block.settings.link }}" class="sentiment-card__link">
-                {%- endif -%}
+                <a href="{{ block.settings.link | default: routes.all_products_collection_url }}" class="sentiment-card__link">
+                  <div class="sentiment-card__image-wrapper">
+                    {%- if block.settings.image != blank -%}
+                      <img
+                        src="{{ block.settings.image | image_url: width: 800 }}"
+                        alt="{{ block.settings.title | default: section.settings.title | escape }}"
+                        loading="lazy"
+                        width="{{ block.settings.image.width }}"
+                        height="{{ block.settings.image.height }}"
+                        class="sentiment-card__image"
+                      >
+                    {%- else -%}
+                      {% assign default_img_idx = forloop.index | modulus: 4 %}
+                      {% if default_img_idx == 1 %}
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=800&auto=format&fit=crop" class="sentiment-card__image" loading="lazy" width="800" height="800" alt="Wife Gift">
+                      {% elsif default_img_idx == 2 %}
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop" class="sentiment-card__image" loading="lazy" width="800" height="800" alt="Girlfriend Gift">
+                      {% elsif default_img_idx == 3 %}
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800&auto=format&fit=crop" class="sentiment-card__image" loading="lazy" width="800" height="800" alt="Mom Gift">
+                      {% else %}
+                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop" class="sentiment-card__image" loading="lazy" width="800" height="800" alt="Birthday Gift">
+                      {% endif %}
+                    {%- endif -%}
+                  </div>
 
-                <div class="sentiment-card__image-wrapper">
-                  {%- if block.settings.image != blank -%}
-                    <img
-                      src="{{ block.settings.image | image_url: width: 800 }}"
-                      alt="{{ block.settings.title | default: section.settings.title | escape }}"
-                      loading="lazy"
-                      width="{{ block.settings.image.width }}"
-                      height="{{ block.settings.image.height }}"
-                      class="sentiment-card__image"
-                    >
-                  {%- else -%}
-                    {% assign default_img_idx = forloop.index | modulus: 4 %}
-                    {% if default_img_idx == 1 %}
-                      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=800&auto=format&fit=crop" class="sentiment-card__image" loading="lazy" width="800" height="800" alt="Wife Gift">
-                    {% elsif default_img_idx == 2 %}
-                      <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop" class="sentiment-card__image" loading="lazy" width="800" height="800" alt="Girlfriend Gift">
-                    {% elsif default_img_idx == 3 %}
-                      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800&auto=format&fit=crop" class="sentiment-card__image" loading="lazy" width="800" height="800" alt="Mom Gift">
-                    {% else %}
-                      <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop" class="sentiment-card__image" loading="lazy" width="800" height="800" alt="Birthday Gift">
-                    {% endif %}
-                  {%- endif -%}
-                </div>
-
-                <div class="sentiment-card__content text-center">
-                  {%- if block.settings.title != blank -%}
-                    <h3 class="sentiment-card__title">
-                      {{ block.settings.title | escape }}
-                    </h3>
-                  {%- endif -%}
-                  {%- if block.settings.subtitle != blank -%}
-                    <p class="sentiment-card__subtitle">
-                      {{ block.settings.subtitle | escape }}
-                    </p>
-                  {%- endif -%}
-                </div>
-
-                {%- if block.settings.link != blank -%}
-                  </a>
-                {%- endif -%}
+                  <div class="sentiment-card__content text-center">
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="sentiment-card__title">
+                        {{ block.settings.title | escape }}
+                      </h3>
+                    {%- endif -%}
+                    {%- if block.settings.subtitle != blank -%}
+                      <p class="sentiment-card__subtitle">
+                        {{ block.settings.subtitle | escape }}
+                      </p>
+                    {%- endif -%}
+                  </div>
+                </a>
               </li>
             {%- endfor -%}
           </ul>
