@@ -341,8 +341,8 @@ html {scroll-behavior: smooth;}img, video {max-width: 100%;height: auto;vertical
 #shopify-section-header,
 .header-wrapper,
 .sticky-header,
-header {
-  position: relative !important;
+header,
+sticky-header {
   z-index: 999 !important;
 }
 
