@@ -68,7 +68,7 @@
     .announcement-marquee__track {
       display: flex;
       width: max-content;
-      animation: marqueeAnimation 25s linear infinite;
+      animation: marqueeAnimation {{ section.settings.marquee_speed | default: 25 }}s linear infinite;
       will-change: transform;
     }
     .announcement-marquee-wrapper:hover .announcement-marquee__track {
@@ -200,6 +200,17 @@
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Marquee Scroll Speed (seconds)",
+      "default": 25,
+      "info": "Lower number = faster speed, higher number = slower speed"
     },
     {
       "type": "range",
