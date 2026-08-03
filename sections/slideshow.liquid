@@ -76,16 +76,6 @@
         {% render 'icon-caret' %}
       </button>
 
-      {%- if section.settings.auto_rotate -%}
-        <button
-          type="button"
-          class="slideshow__autoplay no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
-          aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
-        >
-          {%- render 'icon-pause' -%}
-          {%- render 'icon-play' -%}
-        </button>
-      {%- endif -%}
     </div>
     <noscript>
       <div class="slider-buttons">
@@ -431,39 +421,10 @@
     left: auto !important;
   }
 
-  /* Autoplay Pause/Play button position & style */
-  fade-slideshow .slideshow__controls .slideshow__autoplay {
-    position: absolute !important;
-    bottom: 2rem !important;
-    right: 2.5rem !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    pointer-events: auto !important;
-    background: rgba(12, 11, 16, 0.5) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    z-index: 25 !important;
-    transition: all 0.3s ease !important;
-  }
-  fade-slideshow .slideshow__controls .slideshow__autoplay:hover {
-    background: rgba(12, 11, 16, 0.85) !important;
-    color: #ffffff !important;
-    transform: scale(1.08) !important;
-  }
-  fade-slideshow .slideshow__controls .slideshow__autoplay svg {
-    width: 14px !important;
-    height: 14px !important;
-    fill: currentColor !important;
+  /* Hide Autoplay Pause/Play button completely */
+  fade-slideshow .slideshow__controls .slideshow__autoplay,
+  .slideshow__autoplay {
+    display: none !important;
   }
   
   fade-slideshow .slideshow__controls .slider-counter {
