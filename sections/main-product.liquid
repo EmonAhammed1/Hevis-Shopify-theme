@@ -1,8 +1,7 @@
 <section
   id="MainProduct-{{ section.id }}"
-  class="page-width section-{{ section.id }}-padding color-background-1"
+  class="page-width section-{{ section.id }}-padding"
   data-section="{{ section.id }}"
-  style="background-color: #faf7f2 !important; color: #1a1612 !important;"
 >
   {%- style -%}
     .section-{{ section.id }}-padding {
@@ -15,30 +14,6 @@
         padding-top: {{ section.settings.desktop_padding_top }}px;
         padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
       }
-    }
-
-    #MainProduct-{{ section.id }},
-    #MainProduct-{{ section.id }} .product,
-    #MainProduct-{{ section.id }} .product__info-wrapper,
-    #MainProduct-{{ section.id }} .product__media-wrapper {
-      background-color: #faf7f2 !important;
-      color: #1a1612 !important;
-    }
-
-    #MainProduct-{{ section.id }} h1,
-    #MainProduct-{{ section.id }} h2,
-    #MainProduct-{{ section.id }} h3,
-    #MainProduct-{{ section.id }} p,
-    #MainProduct-{{ section.id }} span,
-    #MainProduct-{{ section.id }} label,
-    #MainProduct-{{ section.id }} div,
-    #MainProduct-{{ section.id }} .price,
-    #MainProduct-{{ section.id }} .price-item,
-    #MainProduct-{{ section.id }} .product__title,
-    #MainProduct-{{ section.id }} .product-title,
-    #MainProduct-{{ section.id }} .shipping-checkpoint__top,
-    #MainProduct-{{ section.id }} .shipping-checkpoint__bottom {
-      color: #1a1612 !important;
     }
 
     #MediaGallery-{{ section.id }} {
@@ -55,21 +30,6 @@
         --slide-container-percentage-width: {{ section.settings.mobile_slides_container_width }}%;
         --slide-inner-percentage-width: {{ section.settings.mobile_slides_inner_width }}%;
       }
-    }
-    #MainProduct-{{ section.id }} {
-      background-color: var(--color-base-background-1, #faf7f2);
-      color: var(--color-base-text, #1a1612);
-    }
-    .product__title h1,
-    .product__title,
-    .product__info-container,
-    .product__description,
-    .price,
-    .price-item,
-    .form__label,
-    .shipping-checkpoint__top,
-    .shipping-checkpoint__bottom {
-      color: #1a1612 !important;
     }
   {%- endstyle -%}
 
