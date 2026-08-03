@@ -278,6 +278,67 @@
         "visibility": "always-display"
       }
     },
+    "product_highlight_features_section": {
+      "type": "product-highlight-features",
+      "blocks": {
+        "item_1": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Elegant heart design with a sparkling diamond"
+          }
+        },
+        "item_2": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Crafted with premium materials"
+          }
+        },
+        "item_3": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Comes with a beautiful message card"
+          }
+        },
+        "item_4": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Hypoallergenic & comfortable for daily wear"
+          }
+        },
+        "item_5": {
+          "type": "feature_item",
+          "settings": {
+            "text": "A timeless keepsake she'll treasure always"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5"
+      ],
+      "settings": {
+        "layout": "left",
+        "show_badge": true,
+        "badge_text": "PREMIUM<br>QUALITY",
+        "subheading": "TIMELESS BEAUTY",
+        "heading": "More Than Just a Necklace",
+        "heading_size": "h1",
+        "show_divider": true,
+        "description": "<p>Each piece is crafted with precision and care, symbolizing a love that lasts forever.</p>",
+        "button_label": "",
+        "button_link": "",
+        "background_color": "#ffffff",
+        "heading_color": "#1a1612",
+        "text_color": "#332d26",
+        "accent_color": "#c69a47",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "visibility": "always-display"
+      }
+    },
     "d2d3417b-e92f-428c-b221-5bceffb552be": {
       "type": "comparison-table",
       "blocks": {
@@ -528,6 +589,7 @@
     "cfca4268-6358-426c-98ab-d292aeef11e5",
     "6aa09428-a417-429d-9159-a4e8afd49590",
     "feature_icon_bar_section",
+    "product_highlight_features_section",
     "d2d3417b-e92f-428c-b221-5bceffb552be",
     "0f1fc9e4-bc4c-4052-9747-62d1f8472caa",
     "contact_form_WHP8G7"
