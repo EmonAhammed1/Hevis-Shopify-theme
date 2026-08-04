@@ -172,7 +172,6 @@
 
   @media screen and (max-width: 749px) {
     .image-features__content {
-      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -192,8 +191,17 @@
       text-align: center;
     }
     .image-features__list {
+      width: 100%;
       align-items: flex-start;
-      display: inline-flex;
+      text-align: left;
+    }
+    .image-features__list-item {
+      justify-content: flex-start;
+      text-align: left;
+      width: 100%;
+    }
+    .image-features__list-text {
+      text-align: left;
     }
     .image-features__button-wrapper {
       width: 100%;
