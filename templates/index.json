@@ -526,9 +526,6 @@
         "arrows_color_scheme": "inverse",
         "transparent_arrows": true,
         "dots_color_scheme": "inverse",
-        "enable_custom_height": true,
-        "desktop_custom_height": 550,
-        "mobile_custom_height": 480,
         "desktop_page_width": "normal",
         "desktop_border_radius": 0,
         "slides_desktop": 3,
@@ -539,6 +536,9 @@
         "desktop_adaptive_height": false,
         "desktop_dots_position": "under",
         "desktop_arrows_position": "sides",
+        "enable_custom_height": true,
+        "desktop_custom_height": 710,
+        "mobile_custom_height": 480,
         "mobile_full_page": false,
         "mobile_border_radius": 0,
         "slides_mobile": 2,
@@ -551,7 +551,7 @@
         "mobile_arrows_position": "sides",
         "padding_top": 20,
         "padding_bottom": 20,
-        "custom_colors_background": "#FFFFFF",
+        "custom_colors_background": "#ffffff",
         "custom_gradient_background": "",
         "custom_colors_text": "#121212"
       }
