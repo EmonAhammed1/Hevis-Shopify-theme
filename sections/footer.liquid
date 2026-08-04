@@ -42,8 +42,211 @@
         {% # theme-check-enable %}
       }
     }
-  {% endif %}
+  /* Pre-Footer Trust Bar */
+  .footer-trust-bar {
+    background: #181512;
+    border-top: 1px solid rgba(198, 154, 71, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.5rem 0;
+  }
+
+  .footer-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 990px) {
+    .footer-trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.8rem;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .footer-trust-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .footer-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+  }
+
+  .footer-trust-icon {
+    color: #c69a47;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(198, 154, 71, 0.1);
+    border: 1px solid rgba(198, 154, 71, 0.25);
+  }
+
+  .footer-trust-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-trust-title {
+    font-family: var(--font-heading-family);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.25;
+  }
+
+  .footer-trust-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 0.2rem;
+  }
+
+  /* Main Footer Luxury Styling */
+  .footer {
+    background-color: #12100e !important;
+    color: #ffffff !important;
+    border-top: 1px solid rgba(198, 154, 71, 0.15);
+  }
+
+  .footer-block__heading {
+    font-family: var(--font-heading-family) !important;
+    font-size: 1.85rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    color: #c69a47 !important;
+    margin-bottom: 1.8rem !important;
+    text-transform: capitalize !important;
+  }
+
+  .footer-block__details-content a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 1.45rem !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .footer-block__details-content a:hover {
+    color: #c69a47 !important;
+    transform: translateX(3px) !important;
+  }
+
+  .footer__newsletter .field__input {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(198, 154, 71, 0.3) !important;
+    border-radius: 50px !important;
+    color: #ffffff !important;
+    padding-left: 2rem !important;
+  }
+
+  .footer__newsletter .field__input:focus {
+    border-color: #c69a47 !important;
+    box-shadow: 0 0 15px rgba(198, 154, 71, 0.3) !important;
+  }
+
+  .newsletter__solid-btn {
+    background: linear-gradient(135deg, #c69a47 0%, #9a6f23 100%) !important;
+    color: #ffffff !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 8px 20px rgba(198, 154, 71, 0.3) !important;
+    transition: all 0.3s ease !important;
+    margin-top: 1rem !important;
+  }
+
+  .newsletter__solid-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 28px rgba(198, 154, 71, 0.45) !important;
+    filter: brightness(1.1) !important;
+  }
+
+  .footer__content-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-top: 2.5rem !important;
+    padding-bottom: 2rem !important;
+    background: #0d0c0a !important;
+  }
+
+  .copyright__content, .copyright__content a {
+    color: rgba(255, 255, 255, 0.55) !important;
+    font-size: 1.3rem !important;
+  }
+
+  .list-payment__item svg {
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+  }
 {%- endstyle -%}
+
+{% comment %} Pre-Footer Trust Bar {% endcomment %}
+<div class="footer-trust-bar">
+  <div class="page-width">
+    <div class="footer-trust-grid">
+      <div class="footer-trust-item">
+        <div class="footer-trust-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+        <div class="footer-trust-text">
+          <span class="footer-trust-title">Free Express Shipping</span>
+          <span class="footer-trust-subtitle">On all orders over $50</span>
+        </div>
+      </div>
+
+      <div class="footer-trust-item">
+        <div class="footer-trust-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <div class="footer-trust-text">
+          <span class="footer-trust-title">Lifetime Quality Warranty</span>
+          <span class="footer-trust-subtitle">Crafted to last forever</span>
+        </div>
+      </div>
+
+      <div class="footer-trust-item">
+        <div class="footer-trust-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+            <rect x="2" y="7" width="20" height="5"></rect>
+            <line x1="12" y1="22" x2="12" y2="7"></line>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+          </svg>
+        </div>
+        <div class="footer-trust-text">
+          <span class="footer-trust-title">Luxury Gift Box Included</span>
+          <span class="footer-trust-subtitle">Ready to impress her</span>
+        </div>
+      </div>
+
+      <div class="footer-trust-item">
+        <div class="footer-trust-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div class="footer-trust-text">
+          <span class="footer-trust-title">100% Secure Checkout</span>
+          <span class="footer-trust-subtitle">Encrypted SSL Protection</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer class="footer color-scheme-{{ section.id }} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding animate-section animate--hidden" data-animations='{{ section.settings.display_animations }}' data-type='{{ settings.animations_type }}'> 
   {%- liquid

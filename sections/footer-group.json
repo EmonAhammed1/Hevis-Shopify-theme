@@ -1,14 +1,5 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
-  "name": "t:sections.footer.name",
+  "name": "Footer",
   "type": "footer",
   "sections": {
     "footer": {
@@ -18,10 +9,10 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Logo.png",
-            "image_width": 100,
+            "image_width": 140,
             "alignment": "center",
             "url": "",
-            "width_desktop": 4,
+            "width_desktop": 3,
             "width_mobile": "2"
           }
         },
@@ -30,19 +21,19 @@
           "settings": {
             "heading": "Quick links",
             "menu": "footer",
-            "width_desktop": 4,
+            "width_desktop": 3,
             "width_mobile": "1"
           }
         },
         "24f208fd-0898-43eb-af23-d74f8420ab37": {
           "type": "email_signup",
           "settings": {
-            "heading": "Subscribe to our emails",
-            "subtext": "<p>Join our email list for exclusive offers and the latest news.</p>",
+            "heading": "Join The VIP List",
+            "subtext": "<p>Subscribe for exclusive discount offers, new drops & love gift ideas.</p>",
             "button_type": "solid",
-            "button_label": "Sign up",
+            "button_label": "SIGN UP",
             "button_style_secondary": false,
-            "width_desktop": 4,
+            "width_desktop": 6,
             "width_mobile": "2"
           }
         }
@@ -53,24 +44,24 @@
         "24f208fd-0898-43eb-af23-d74f8420ab37"
       ],
       "settings": {
-        "color_scheme": "accent-1",
+        "color_scheme": "custom",
         "enable_follow_on_shop": false,
-        "show_social": false,
+        "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": true,
         "payment_enable": true,
         "enabled_payment_types": "",
-        "show_policy": false,
-        "branding_text": "Powered by <a href=\"https://shrinesolutions.com/\" target=\"_blank\" title=\"https://shrinesolutions.com/\">Shrine</a>",
+        "show_policy": true,
+        "branding_text": "© 2026 Hevis Jewels. All Rights Reserved.",
         "margin_top": 0,
-        "padding_top": 32,
-        "padding_bottom": 20,
-        "custom_colors_background": "#121212",
+        "padding_top": 48,
+        "padding_bottom": 24,
+        "custom_colors_background": "#12100e",
         "custom_gradient_background": "",
         "custom_colors_text": "#ffffff",
-        "custom_colors_solid_button_background": "#ffffff",
-        "custom_colors_solid_button_text": "#121212",
-        "custom_colors_outline_button": "#ffffff"
+        "custom_colors_solid_button_background": "#c69a47",
+        "custom_colors_solid_button_text": "#ffffff",
+        "custom_colors_outline_button": "#c69a47"
       }
     }
   },
