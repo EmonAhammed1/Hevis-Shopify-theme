@@ -59,9 +59,10 @@
   .sentiment-slider--{{ section.id }} .sentiment-slider__title {
     font-family: var(--font-heading-family);
     font-style: var(--font-heading-style);
-    font-weight: var(--font-heading-weight);
+    font-weight: 500;
     color: {{ section.settings.heading_color }};
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
+    text-transform: none !important;
     text-align: center !important;
     width: 100% !important;
     margin-left: auto !important;
@@ -206,7 +207,7 @@
   <div class="page-width">
     {%- if section.settings.title != blank -%}
       <div class="sentiment-slider__header text-center">
-        <h2 class="sentiment-slider__title {{ section.settings.heading_size }} text-uppercase">
+        <h2 class="sentiment-slider__title {{ section.settings.heading_size }}">
           {{ section.settings.title | escape }}
         </h2>
         {%- if section.settings.show_divider -%}
