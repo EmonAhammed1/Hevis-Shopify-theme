@@ -350,22 +350,13 @@
     "sentiment_slider_section": {
       "type": "sentiment-slider",
       "blocks": {
-        "sentiment_card_wh33fL": {
+        "card_2": {
           "type": "sentiment_card",
           "settings": {
-            "image": "shopify://shop_images/asset_1582_transformation_17195.jpg",
-            "title": "For Your Wife",
-            "subtitle": "Celebrate your forever love",
-            "link": ""
-          }
-        },
-        "sentiment_card_Xg47CU": {
-          "type": "sentiment_card",
-          "settings": {
-            "image": "shopify://shop_images/hf_20260628_033021_3bf35504-6690-44c0-9c9a-2467fb02eb95.png",
-            "title": "For Your Wife",
-            "subtitle": "Celebrate your forever love",
-            "link": ""
+            "image": "shopify://shop_images/asset_782_transformation_1726.jpg",
+            "title": "For Your Girlfriend",
+            "subtitle": "A gift she'll cherish",
+            "link": "/collections/all"
           }
         },
         "card_1": {
@@ -377,39 +368,12 @@
             "link": "/collections/all"
           }
         },
-        "sentiment_card_hAJ4EK": {
-          "type": "sentiment_card",
-          "settings": {
-            "image": "shopify://shop_images/hf_20260707_222756_d1bb8b87-5c0c-44dc-a435-6b6e362ee7c6.png",
-            "title": "For Your Wife",
-            "subtitle": "Celebrate your forever love",
-            "link": ""
-          }
-        },
         "card_3": {
           "type": "sentiment_card",
           "settings": {
             "image": "shopify://shop_images/asset_783_transformation_13992.jpg",
             "title": "For Your Mom",
             "subtitle": "Thank her for everything",
-            "link": "/collections/all"
-          }
-        },
-        "card_2": {
-          "type": "sentiment_card",
-          "settings": {
-            "image": "shopify://shop_images/asset_782_transformation_1726.jpg",
-            "title": "For Your Girlfriend",
-            "subtitle": "A gift she'll cherish",
-            "link": "/collections/all"
-          }
-        },
-        "card_4": {
-          "type": "sentiment_card",
-          "settings": {
-            "image": "shopify://shop_images/asset_1583_transformation_9214.jpg",
-            "title": "Birthday Gifts",
-            "subtitle": "Make her day extra special",
             "link": "/collections/all"
           }
         },
@@ -421,17 +385,33 @@
             "subtitle": "Celebrate your forever love",
             "link": ""
           }
+        },
+        "card_4": {
+          "type": "sentiment_card",
+          "settings": {
+            "image": "shopify://shop_images/asset_1583_transformation_9214.jpg",
+            "title": "Birthday Gifts",
+            "subtitle": "Make her day extra special",
+            "link": "/collections/all"
+          }
+        },
+        "sentiment_card_wh33fL": {
+          "type": "sentiment_card",
+          "settings": {
+            "image": "shopify://shop_images/asset_1582_transformation_17195.jpg",
+            "title": "For Your Wife",
+            "subtitle": "Celebrate your forever love",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "sentiment_card_wh33fL",
-        "sentiment_card_Xg47CU",
-        "card_1",
-        "sentiment_card_hAJ4EK",
-        "card_3",
         "card_2",
+        "card_1",
+        "card_3",
+        "sentiment_card_7JLMWx",
         "card_4",
-        "sentiment_card_7JLMWx"
+        "sentiment_card_wh33fL"
       ],
       "settings": {
         "title": "Shop By Sentiment",
