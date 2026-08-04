@@ -117,56 +117,104 @@
 
   .comparison-table,
   .comparison-table-{{ section.id }},
-  .content-and-comparison-table .comparison-table {
-    margin: 0 auto !important;
-    max-width: 1400px !important;
-    min-width: 900px !important;
-    width: 100% !important;
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07) !important;
-    border-radius: 16px !important;
-  }
-
-  /* Table column proportions and compact row height */
-  .comparison-table th,
-  .comparison-table td {
-    padding: 0.9rem 1.4rem !important;
-  }
-
-  .comparison-table th:first-child,
-  .comparison-table td:first-child {
-    width: 60% !important;
-    text-align: left !important;
-    padding: 0.9rem 2.2rem !important;
-    font-size: 1.55rem !important;
-  }
-
-  .comparison-table th:nth-child(2),
-  .comparison-table td:nth-child(2),
-  .comparison-table th:nth-child(3),
-  .comparison-table td:nth-child(3) {
-    width: 20% !important;
-    text-align: center !important;
-    padding: 0.9rem 1rem !important;
-  }
-
-  /* Mobile responsiveness */
-  @media screen and (max-width: 749px) {
-    .content-and-comparison-table .comparison-table {
-      min-width: 600px !important;
+  /* Desktop Styling (>= 750px) */
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .page-width {
+      max-width: 1400px !important;
+      width: 100% !important;
     }
+
+    .content-and-comparison-table .comparison-table-container {
+      width: 100% !important;
+      max-width: 1400px !important;
+    }
+
+    .comparison-table,
+    .comparison-table-{{ section.id }},
+    .content-and-comparison-table .comparison-table {
+      margin: 0 auto !important;
+      max-width: 1400px !important;
+      width: 100% !important;
+      table-layout: fixed !important;
+    }
+
     .comparison-table th:first-child,
     .comparison-table td:first-child {
-      padding: 0.8rem 1rem !important;
-      font-size: 1.35rem !important;
+      width: 60% !important;
+      text-align: left !important;
+      padding: 0.9rem 2.2rem !important;
+      font-size: 1.55rem !important;
     }
+
     .comparison-table th:nth-child(2),
     .comparison-table td:nth-child(2),
     .comparison-table th:nth-child(3),
     .comparison-table td:nth-child(3) {
-      padding: 0.8rem 0.5rem !important;
-      font-size: 1.3rem !important;
+      width: 20% !important;
+      text-align: center !important;
+      padding: 0.9rem 1rem !important;
+    }
+  }
+
+  /* 100% Pixel Perfect Mobile Responsiveness (< 750px) */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .page-width {
+      padding-left: 0.8rem !important;
+      padding-right: 0.8rem !important;
+    }
+
+    .content-and-comparison-table .comparison-table-container {
+      width: 100% !important;
+      overflow-x: hidden !important;
+      padding: 0 !important;
+    }
+
+    .comparison-table,
+    .comparison-table-{{ section.id }},
+    .content-and-comparison-table .comparison-table {
+      min-width: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      table-layout: fixed !important;
+      border-radius: 12px !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem 0.4rem !important;
+      box-sizing: border-box !important;
+    }
+
+    .comparison-table th:first-child,
+    .comparison-table td:first-child {
+      width: 52% !important;
+      text-align: left !important;
+      padding: 0.75rem 0.6rem !important;
+      font-size: 1.2rem !important;
+      line-height: 1.3 !important;
+      word-break: break-word !important;
+    }
+
+    .comparison-table th:nth-child(2),
+    .comparison-table td:nth-child(2),
+    .comparison-table th:nth-child(3),
+    .comparison-table td:nth-child(3) {
+      width: 24% !important;
+      text-align: center !important;
+      padding: 0.75rem 0.2rem !important;
+      font-size: 1.15rem !important;
+      line-height: 1.2 !important;
+    }
+
+    .comparison-table .comparison-table__logo {
+      font-size: 1.1rem !important;
+    }
+
+    .comparison-table td .material-icon,
+    .comparison-table td svg,
+    .comparison-table td .icon {
+      transform: scale(0.85);
     }
   }
 {%- endstyle -%}
