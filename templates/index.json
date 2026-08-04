@@ -629,6 +629,10 @@
         "row_6"
       ],
       "settings": {
+        "bg_image": "shopify://shop_images/hero_bg.webp",
+        "bg_overlay_color": "#fffcf8",
+        "bg_overlay_opacity": 85,
+        "enable_fixed_bg": true,
         "display_id": false,
         "visibility": "always-display",
         "title": "Why Choose Hevis Jewelry?",
