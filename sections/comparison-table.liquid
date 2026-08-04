@@ -115,16 +115,47 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Clean Card Outer Box & Subtle Outer Border */
+  /* Transparent Glassmorphism Card Styling */
   .comparison-table,
   .comparison-table-{{ section.id }},
   .content-and-comparison-table .comparison-table {
-    border: 1px solid rgba(198, 154, 71, 0.4) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 18px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+    backdrop-filter: blur(22px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.07), inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(198, 154, 71, 0.3) !important;
     overflow: hidden !important;
-    background: #ffffff !important;
     box-sizing: border-box !important;
+  }
+
+  /* Glassmorphism Row & Cell Overrides */
+  .comparison-table tr,
+  .comparison-table td,
+  .comparison-table th {
+    background-color: transparent !important;
+  }
+
+  .comparison-table tbody tr:nth-child(even) td:not(.highlighted-color-{{ section.id }}) {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .comparison-table tbody tr:nth-child(odd) td:not(.highlighted-color-{{ section.id }}) {
+    background-color: rgba(255, 255, 255, 0.35) !important;
+  }
+
+  .comparison-table td,
+  .comparison-table th {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45) !important;
+  }
+
+  /* Preserve Gold/Grey Highlighted Column (Hevis Jewels) */
+  .comparison-table .highlighted-color-{{ section.id }},
+  .comparison-table td.highlighted-color-{{ section.id }},
+  .comparison-table th.highlighted-color-{{ section.id }} {
+    background: linear-gradient(180deg, #c69a47 0%, #ab8235 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 30px rgba(198, 154, 71, 0.35) !important;
   }
 
   .comparison-table__features-header {
@@ -200,7 +231,7 @@
       width: 100% !important;
       max-width: 100% !important;
       table-layout: fixed !important;
-      border: 1px solid rgba(198, 154, 71, 0.4) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
       border-radius: 14px !important;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06) !important;
       overflow: hidden !important;
