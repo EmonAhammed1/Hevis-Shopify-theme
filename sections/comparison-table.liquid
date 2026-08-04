@@ -68,14 +68,15 @@
   }
 
   .comparison-table-section-bg-{{ section.id }} {
-    {% assign overlay_op = section.settings.bg_overlay_opacity | divided_by: 100.0 %}
     {% assign overlay_color = section.settings.bg_overlay_color %}
     
     {% if overlay_color == blank or overlay_color.alpha == 0 or overlay_color == 'transparent' %}
+      {% assign overlay_op = 0 %}
       {% assign r = 255 %}
       {% assign g = 255 %}
       {% assign b = 255 %}
     {% else %}
+      {% assign overlay_op = section.settings.bg_overlay_opacity | divided_by: 100.0 %}
       {% assign r = overlay_color.red %}
       {% assign g = overlay_color.green %}
       {% assign b = overlay_color.blue %}
