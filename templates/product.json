@@ -304,19 +304,51 @@
             "margin_bottom": 24
           }
         },
-        "de158e68-5d0d-4819-a625-e2dabdff87d1": {
+        "collapsible_tab_shipping": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Collapsible row",
+            "heading": "Shipping & Delivery Times",
             "heading_size": "medium",
-            "icon": "check_box",
+            "icon": "truck",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "",
+            "content": "<p><strong>Fast Express Delivery:</strong><br>• US Orders: 2 - 4 business days.<br>• International: 5 - 8 business days.<br>• Every order is shipped with a live tracking code sent directly to your email. Packaged in a discrete luxury box ready for gifting.</p>",
             "page": "",
             "margin_top": 24,
+            "margin_bottom": 0
+          }
+        },
+        "collapsible_tab_specs": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Jewelry Specs",
+            "heading_size": "medium",
+            "icon": "star",
+            "filled_icon": false,
+            "collapse_icon": "carret",
+            "display_top_border": true,
+            "open": false,
+            "content": "<p><strong>Craftsmanship & Quality:</strong><br>• 14k White Gold Finish over solid stainless steel.<br>• Center Crystal: 6mm round cut AAA Cubic Zirconia.<br>• Chain: 18\"-22\" adjustable cable chain with secure lobster clasp.<br>• 100% Hypoallergenic, nickel-free & tarnish-resistant for daily wear.</p>",
+            "page": "",
+            "margin_top": 12,
+            "margin_bottom": 0
+          }
+        },
+        "collapsible_tab_guarantee": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Lifetime Guarantee & 30-Day Returns",
+            "heading_size": "medium",
+            "icon": "check_mark",
+            "filled_icon": false,
+            "collapse_icon": "carret",
+            "display_top_border": true,
+            "open": false,
+            "content": "<p><strong>Our Promise to You:</strong><br>• 100% Satisfaction Guarantee: If she doesn't absolutely adore her gift, exchange or return it within 30 days hassle-free.<br>• Lifetime Tarnish-Free Promise.<br>• 24/7 Dedicated Support: support@hevisjewels.com.</p>",
+            "page": "",
+            "margin_top": 12,
             "margin_bottom": 0
           }
         },
@@ -341,7 +373,9 @@
         "e0a0b690-50df-4ca4-acfd-ce2980696cce",
         "e7a28cbe-03cb-4c9d-a2c4-0e3e76ffb3e5",
         "reviews_8UgFbe",
-        "de158e68-5d0d-4819-a625-e2dabdff87d1",
+        "collapsible_tab_shipping",
+        "collapsible_tab_specs",
+        "collapsible_tab_guarantee",
         "judge_me_reviews_review_widget_H6NPkt"
       ],
       "custom_css": [],
