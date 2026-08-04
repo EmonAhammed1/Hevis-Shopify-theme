@@ -229,12 +229,21 @@
     border-top: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  .review-avatar-{{ section.id }} {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid {{ section.settings.accent_color }};
+  .review-avatar-{{ section.id }},
+  .review-author-{{ section.id }} img {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    flex-shrink: 0 !important;
+    aspect-ratio: 1 / 1 !important;
+    border: 2px solid {{ section.settings.accent_color }} !important;
+    display: block !important;
   }
 
   .review-author-info-{{ section.id }} {
@@ -301,9 +310,22 @@
             {%- endif -%}
             <div class="review-author-{{ section.id }}">
               {%- if block.settings.author_image != blank -%}
-                {{ block.settings.author_image | image_url: width: 100 | image_tag: class: 'review-avatar-banner', loading: 'lazy' }}
+                <img class="review-avatar-{{ section.id }}" src="{{ block.settings.author_image | image_url: width: 120, height: 120, crop: 'center' }}" alt="{{ block.settings.author_name }}" width="50" height="50" loading="lazy">
               {%- else -%}
-                <img class="review-avatar-{{ section.id }}" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="{{ block.settings.author_name }}" width="48" height="48" loading="lazy">
+                {%- assign name_lower = block.settings.author_name | downcase -%}
+                {%- if name_lower contains 'michael' or name_lower contains 'daniel' or name_lower contains 'david' or name_lower contains 'john' or name_lower contains 'alex' or name_lower contains 'james' or name_lower contains 'robert' or name_lower contains 'k.' or name_lower contains 't.' -%}
+                  {%- if name_lower contains 'daniel' -%}
+                    <img class="review-avatar-{{ section.id }}" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="{{ block.settings.author_name }}" width="50" height="50" loading="lazy">
+                  {%- else -%}
+                    <img class="review-avatar-{{ section.id }}" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="{{ block.settings.author_name }}" width="50" height="50" loading="lazy">
+                  {%- endif -%}
+                {%- else -%}
+                  {%- if name_lower contains 'sophia' -%}
+                    <img class="review-avatar-{{ section.id }}" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="{{ block.settings.author_name }}" width="50" height="50" loading="lazy">
+                  {%- else -%}
+                    <img class="review-avatar-{{ section.id }}" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="{{ block.settings.author_name }}" width="50" height="50" loading="lazy">
+                  {%- endif -%}
+                {%- endif -%}
               {%- endif -%}
               <div class="review-author-info-{{ section.id }}">
                 <div class="review-author-name-{{ section.id }}">{{ block.settings.author_name }}</div>
