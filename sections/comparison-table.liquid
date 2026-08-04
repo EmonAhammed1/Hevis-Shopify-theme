@@ -68,7 +68,48 @@
   }
 
   .comparison-table-section-bg-{{ section.id }} {
-    background: linear-gradient(rgba(255, 252, 248, 0.90), rgba(255, 252, 248, 0.90)), url('{{ "luxury_comparison_bg.jpg" | asset_url }}') center center / cover no-repeat !important;
+    background: linear-gradient(rgba(255, 252, 248, 0.85), rgba(255, 252, 248, 0.85)), url('{{ "luxury_comparison_bg.jpg" | asset_url }}') center center / cover no-repeat !important;
+  }
+
+  .content-and-comparison-table {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 3rem !important;
+    width: 100% !important;
+  }
+
+  .content-and-comparison-table .content-container {
+    text-align: center !important;
+    max-width: 750px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .content-and-comparison-table .content-container h2 {
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .content-and-comparison-table .content-container .rte {
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .content-and-comparison-table .comparison-table-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .content-and-comparison-table .comparison-table {
+    margin: 0 auto !important;
+    max-width: 900px !important;
+    width: 100% !important;
   }
 {%- endstyle -%}
 
