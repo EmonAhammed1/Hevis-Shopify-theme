@@ -125,16 +125,16 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Exact Reference Image Frosted Glassmorphism Card */
+  /* Ultra Seamless Frosted Glassmorphism Card */
   .comparison-table,
   .comparison-table-{{ section.id }},
   .content-and-comparison-table .comparison-table {
-    border: 1px solid rgba(255, 255, 255, 0.45) !important;
-    border-radius: 24px !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 100%) !important;
-    backdrop-filter: blur(35px) saturate(190%) !important;
-    -webkit-backdrop-filter: blur(35px) saturate(190%) !important;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), inset 0 1.5px 1px rgba(255, 255, 255, 0.6) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
+    border-radius: 22px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.15) 100%) !important;
+    backdrop-filter: blur(35px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.1), inset 0 1.5px 2px rgba(255, 255, 255, 0.9) !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
   }
@@ -142,31 +142,30 @@
   /* Glassmorphism Row & Cell Overrides */
   .comparison-table tr,
   .comparison-table td,
-  .comparison-table th {
+  .comparison-table th,
+  .comparison-table tbody tr,
+  .comparison-table tbody td,
+  .comparison-table tbody th {
     background: transparent !important;
-  }
-
-  .comparison-table tbody tr:nth-child(even) td:not(.highlighted-color-{{ section.id }}) {
-    background: rgba(255, 255, 255, 0.06) !important;
-  }
-
-  .comparison-table tbody tr:nth-child(odd) td:not(.highlighted-color-{{ section.id }}) {
-    background: rgba(255, 255, 255, 0.12) !important;
   }
 
   .comparison-table td,
   .comparison-table th {
     border-bottom: 1px solid rgba(255, 255, 255, 0.25) !important;
+    color: #1a1a1a !important;
+  }
+
+  .comparison-table tbody tr:last-child td {
+    border-bottom: none !important;
   }
 
   /* Preserve Gold/Grey Highlighted Column (Hevis Jewels) */
   .comparison-table .highlighted-color-{{ section.id }},
   .comparison-table td.highlighted-color-{{ section.id }},
   .comparison-table th.highlighted-color-{{ section.id }} {
-    background: linear-gradient(180deg, rgba(198, 154, 71, 0.88) 0%, rgba(171, 130, 53, 0.92) 100%) !important;
-    backdrop-filter: blur(20px) !important;
+    background: linear-gradient(180deg, #c69a47 0%, #ab8235 100%) !important;
     color: #ffffff !important;
-    box-shadow: 0 10px 30px rgba(198, 154, 71, 0.3) !important;
+    box-shadow: 0 10px 30px rgba(198, 154, 71, 0.35) !important;
   }
 
   .comparison-table__features-header {
