@@ -28,24 +28,27 @@
   .reviews-header-{{ section.id }} {
     text-align: center;
     margin-bottom: 3.5rem;
+    padding-top: 1rem;
   }
 
   .reviews-subtitle-{{ section.id }} {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: {{ section.settings.accent_color }};
     font-weight: 700;
     margin-bottom: 0.8rem;
+    display: block;
   }
 
   .reviews-title-{{ section.id }} {
     font-family: var(--font-heading-family);
-    font-size: clamp(2.6rem, 4vw, 4rem);
-    font-weight: 500;
+    font-size: clamp(3rem, 5.5vw, 4.8rem);
+    font-weight: 600;
     color: #1a1a1a;
     margin: 0 0 1.2rem;
-    line-height: 1.2;
+    line-height: 1.25;
+    display: block;
   }
 
   .reviews-heart-divider-{{ section.id }} {
@@ -54,15 +57,15 @@
     justify-content: center;
     gap: 1rem;
     color: {{ section.settings.accent_color }};
-    margin-top: 0.5rem;
+    margin-top: 0.8rem;
   }
 
   .reviews-heart-divider-{{ section.id }}::before,
   .reviews-heart-divider-{{ section.id }}::after {
     content: '';
     display: block;
-    height: 1px;
-    width: 60px;
+    height: 1.5px;
+    width: 70px;
     background: linear-gradient(90deg, transparent, {{ section.settings.accent_color }});
   }
 
@@ -71,8 +74,8 @@
   }
 
   .reviews-heart-divider-{{ section.id }} svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     fill: {{ section.settings.accent_color }};
   }
 
@@ -87,11 +90,11 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.12);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -111,11 +114,11 @@
   }
 
   .reviews-nav-prev-{{ section.id }} {
-    left: -20px;
+    left: -24px;
   }
 
   .reviews-nav-next-{{ section.id }} {
-    right: -20px;
+    right: -24px;
   }
 
   @media screen and (max-width: 749px) {
@@ -192,7 +195,7 @@
 
   .review-headline-{{ section.id }} {
     font-family: var(--font-heading-family);
-    font-size: 1.8rem;
+    font-size: 1.85rem;
     font-weight: 600;
     color: #1a1a1a;
     margin-bottom: 1rem;
@@ -257,7 +260,7 @@
   <div class="page-width">
     <div class="reviews-header-{{ section.id }}">
       {%- if section.settings.subtitle != blank -%}
-        <div class="reviews-subtitle-{{ section.id }}">{{ section.settings.subtitle }}</div>
+        <span class="reviews-subtitle-{{ section.id }}">{{ section.settings.subtitle }}</span>
       {%- endif -%}
       {%- if section.settings.title != blank -%}
         <h2 class="reviews-title-{{ section.id }}">{{ section.settings.title }}</h2>
@@ -325,17 +328,44 @@
 
     if (!track) return;
 
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function () {
-        track.scrollBy({ left: -340, behavior: 'smooth' });
+    // Clone cards for infinite loop sliding
+    const originalCards = Array.from(track.children);
+    if (originalCards.length > 0) {
+      originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        track.appendChild(clone);
       });
     }
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
-        track.scrollBy({ left: 340, behavior: 'smooth' });
-      });
+    function scrollNext() {
+      const step = track.firstElementChild ? track.firstElementChild.offsetWidth + 32 : 320;
+      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 40) {
+        track.scrollLeft = 0;
+      } else {
+        track.scrollBy({ left: step, behavior: 'smooth' });
+      }
     }
+
+    function scrollPrev() {
+      const step = track.firstElementChild ? track.firstElementChild.offsetWidth + 32 : 320;
+      if (track.scrollLeft <= 10) {
+        track.scrollLeft = track.scrollWidth / 2;
+      } else {
+        track.scrollBy({ left: -step, behavior: 'smooth' });
+      }
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', scrollNext);
+    if (prevBtn) prevBtn.addEventListener('click', scrollPrev);
+
+    // Auto Play Infinite Loop
+    let autoPlay = setInterval(scrollNext, 3800);
+
+    track.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    track.parentElement.addEventListener('mouseleave', () => {
+      clearInterval(autoPlay);
+      autoPlay = setInterval(scrollNext, 3800);
+    });
 
     // Touch & Mouse Drag Sliding
     let isDown = false;
@@ -348,13 +378,8 @@
       scrollLeft = track.scrollLeft;
     });
 
-    track.addEventListener('mouseleave', () => {
-      isDown = false;
-    });
-
-    track.addEventListener('mouseup', () => {
-      isDown = false;
-    });
+    track.addEventListener('mouseleave', () => { isDown = false; });
+    track.addEventListener('mouseup', () => { isDown = false; });
 
     track.addEventListener('mousemove', (e) => {
       if (!isDown) return;
