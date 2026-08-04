@@ -29,7 +29,7 @@
             "star_color": "#ffcc00",
             "bg_stars_style": "full",
             "bg_star_color": "#ececec",
-            "label": "(xxxx Reviews)",
+            "label": "(37 Reviews)",
             "size": 16,
             "alignment": "flex-start",
             "scroll_id": "",
@@ -690,12 +690,90 @@
         "custom_gradient_background": "",
         "custom_colors_text": "#121212"
       }
+    },
+    "1785841057cb89f267": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_tMD3j4": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_tMD3j4"
+      ],
+      "settings": {
+        "display_id": false,
+        "include_margins": true
+      }
+    },
+    "customer_reviews_carousel_cnLgMk": {
+      "type": "customer-reviews-carousel",
+      "blocks": {
+        "review_rdXDMm": {
+          "type": "review",
+          "settings": {
+            "headline": "She loved it so much!",
+            "body": "The necklace is beautiful and the message card made it even more special. Great quality and fast delivery!",
+            "author_name": "Emma R."
+          }
+        },
+        "review_4BA7FJ": {
+          "type": "review",
+          "settings": {
+            "headline": "Perfect anniversary gift",
+            "body": "My wife was in tears when she opened the box. Highly recommended!",
+            "author_name": "Michael T."
+          }
+        },
+        "review_dhyDic": {
+          "type": "review",
+          "settings": {
+            "headline": "Stunning and elegant",
+            "body": "It shines so beautifully and looks exactly like the pictures. Packaging is gorgeous!",
+            "author_name": "Sophia L."
+          }
+        },
+        "review_fYi9RP": {
+          "type": "review",
+          "settings": {
+            "headline": "Worth every penny",
+            "body": "A meaningful gift that she wears every day. Thank you Hevis Jewels!",
+            "author_name": "Daniel K."
+          }
+        }
+      },
+      "block_order": [
+        "review_rdXDMm",
+        "review_4BA7FJ",
+        "review_dhyDic",
+        "review_fYi9RP"
+      ],
+      "settings": {
+        "subtitle": "REAL LOVE, REAL REVIEWS",
+        "title": "What Our Customers Say",
+        "bg_image": "shopify://shop_images/ChatGPT_Image_Aug_4_2026_02_25_38_PM.webp",
+        "bg_overlay_color": "rgba(0,0,0,0)",
+        "bg_overlay_opacity": 80,
+        "enable_fixed_bg": false,
+        "background_color": "#faf8f5",
+        "accent_color": "#c69a47",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
     "main",
     "related-products",
     "8beb6911-28c6-482c-976a-e5421ad3e8df",
-    "image_slider_FVhjbN"
+    "image_slider_FVhjbN",
+    "1785841057cb89f267",
+    "customer_reviews_carousel_cnLgMk"
   ]
 }
