@@ -8,6 +8,37 @@
     border-radius: {{ section.settings.mobile_border_radius }}px;
   }
 
+  {% if section.settings.enable_custom_height %}
+    @media screen and (max-width: 749px) {
+      .section-{{ section.id }}-padding .image-slide__image {
+        height: {{ section.settings.mobile_custom_height }}px !important;
+        aspect-ratio: auto !important;
+        padding-bottom: 0 !important;
+      }
+      .section-{{ section.id }}-padding .image-slide__image video,
+      .section-{{ section.id }}-padding .image-slide__image img,
+      .section-{{ section.id }}-padding .image-slide__image iframe {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
+      }
+    }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding .image-slide__image {
+        height: {{ section.settings.desktop_custom_height }}px !important;
+        aspect-ratio: auto !important;
+        padding-bottom: 0 !important;
+      }
+      .section-{{ section.id }}-padding .image-slide__image video,
+      .section-{{ section.id }}-padding .image-slide__image img,
+      .section-{{ section.id }}-padding .image-slide__image iframe {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
+      }
+    }
+  {% endif %}
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -227,7 +258,7 @@
     {
       "type": "inline_richtext",
       "id": "title",
-      "default": "Image/Video slider",
+      "default": "Customer Showcase & Unboxing",
       "label": "Heading",
       "info": "Bold certain words to highlight them with a different color."
     },
@@ -552,6 +583,36 @@
     },
     {
       "type": "header",
+      "content": "Custom Media Height"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_height",
+      "label": "Enable custom media height",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "desktop_custom_height",
+      "min": 300,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "label": "Desktop video/media height",
+      "default": 550
+    },
+    {
+      "type": "range",
+      "id": "mobile_custom_height",
+      "min": 250,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Mobile video/media height",
+      "default": 480
+    },
+    {
+      "type": "header",
       "content": "Mobile"
     },
     {
@@ -866,7 +927,7 @@
           "type": "checkbox",
           "id": "display_sound_btn",
           "label": "Display mute/unmute button",
-          "default": false
+          "default": true
         },
         {
           "type": "select",
