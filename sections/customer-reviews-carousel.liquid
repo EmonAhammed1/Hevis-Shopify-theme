@@ -1,0 +1,356 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .reviews-carousel-bg-{{ section.id }} {
+    background: {{ section.settings.background_color }};
+  }
+
+  .reviews-header-{{ section.id }} {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .reviews-subtitle-{{ section.id }} {
+    font-size: 1.2rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: {{ section.settings.accent_color }};
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+
+  .reviews-title-{{ section.id }} {
+    font-family: var(--font-heading-family);
+    font-size: clamp(2.6rem, 4vw, 4rem);
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0 0 1.2rem;
+    line-height: 1.2;
+  }
+
+  .reviews-heart-divider-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: {{ section.settings.accent_color }};
+    margin-top: 0.5rem;
+  }
+
+  .reviews-heart-divider-{{ section.id }}::before,
+  .reviews-heart-divider-{{ section.id }}::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(90deg, transparent, {{ section.settings.accent_color }});
+  }
+
+  .reviews-heart-divider-{{ section.id }}::after {
+    background: linear-gradient(90deg, {{ section.settings.accent_color }}, transparent);
+  }
+
+  .reviews-heart-divider-{{ section.id }} svg {
+    width: 16px;
+    height: 16px;
+    fill: {{ section.settings.accent_color }};
+  }
+
+  /* Carousel Grid & Cards */
+  .reviews-grid-{{ section.id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .reviews-grid-{{ section.id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .reviews-grid-{{ section.id }} {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 1.2rem;
+      padding-bottom: 1.5rem;
+    }
+    .review-card-{{ section.id }} {
+      flex: 0 0 85%;
+      scroll-snap-align: center;
+    }
+  }
+
+  .review-card-{{ section.id }} {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .review-card-{{ section.id }}:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.09);
+  }
+
+  .review-stars-{{ section.id }} {
+    color: #d4a359;
+    font-size: 1.8rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .review-headline-{{ section.id }} {
+    font-family: var(--font-heading-family);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .review-body-{{ section.id }} {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+
+  .review-author-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    text-align: left;
+    margin-top: auto;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .review-avatar-{{ section.id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid {{ section.settings.accent_color }};
+  }
+
+  .review-author-info-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .review-author-name-{{ section.id }} {
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: #1a1a1a;
+  }
+
+  .review-verified-{{ section.id }} {
+    font-size: 1.2rem;
+    color: #2b8a3e;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+  }
+
+  .review-verified-{{ section.id }} svg {
+    width: 14px;
+    height: 14px;
+    fill: #2b8a3e;
+  }
+{%- endstyle -%}
+
+<div class="reviews-carousel-bg-{{ section.id }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="reviews-header-{{ section.id }}">
+      {%- if section.settings.subtitle != blank -%}
+        <div class="reviews-subtitle-{{ section.id }}">{{ section.settings.subtitle }}</div>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="reviews-title-{{ section.id }}">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      <div class="reviews-heart-divider-{{ section.id }}">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="reviews-grid-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        <div class="review-card-{{ section.id }}" {{ block.shopify_attributes }}>
+          <div class="review-stars-{{ section.id }}">
+            ★★★★★
+          </div>
+          {%- if block.settings.headline != blank -%}
+            <div class="review-headline-{{ section.id }}">“{{ block.settings.headline }}”</div>
+          {%- endif -%}
+          {%- if block.settings.body != blank -%}
+            <div class="review-body-{{ section.id }}">{{ block.settings.body }}</div>
+          {%- endif -%}
+          <div class="review-author-{{ section.id }}">
+            {%- if block.settings.author_image != blank -%}
+              {{ block.settings.author_image | image_url: width: 100 | image_tag: class: 'review-avatar-banner', loading: 'lazy' }}
+            {%- else -%}
+              <img class="review-avatar-{{ section.id }}" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="{{ block.settings.author_name }}" width="48" height="48" loading="lazy">
+            {%- endif -%}
+            <div class="review-author-info-{{ section.id }}">
+              <div class="review-author-name-{{ section.id }}">{{ block.settings.author_name }}</div>
+              <div class="review-verified-{{ section.id }}">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                Verified Buyer
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Reviews Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "REAL LOVE, REAL REVIEWS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#faf8f5"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#c69a47"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Review Headline",
+          "default": "She loved it so much!"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review Text",
+          "default": "The necklace is beautiful and the message card made it even more special. Great quality and fast delivery!"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Emma R."
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Photo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews Carousel",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "headline": "She loved it so much!",
+            "body": "The necklace is beautiful and the message card made it even more special. Great quality and fast delivery!",
+            "author_name": "Emma R."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "headline": "Perfect anniversary gift",
+            "body": "My wife was in tears when she opened the box. Highly recommended!",
+            "author_name": "Michael T."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "headline": "Stunning and elegant",
+            "body": "It shines so beautifully and looks exactly like the pictures. Packaging is gorgeous!",
+            "author_name": "Sophia L."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "headline": "Worth every penny",
+            "body": "A meaningful gift that she wears every day. Thank you Hevis Jewels!",
+            "author_name": "Daniel K."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
