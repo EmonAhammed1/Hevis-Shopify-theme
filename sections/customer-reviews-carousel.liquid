@@ -12,7 +12,17 @@
   }
 
   .reviews-carousel-bg-{{ section.id }} {
-    background: {{ section.settings.background_color }};
+    {% assign overlay_color = section.settings.bg_overlay_color | default: section.settings.background_color %}
+    {% assign overlay_op = section.settings.bg_overlay_opacity | divided_by: 100.0 %}
+    {% assign r = overlay_color.red %}
+    {% assign g = overlay_color.green %}
+    {% assign b = overlay_color.blue %}
+    
+    {% if section.settings.bg_image != blank %}
+      background: linear-gradient(rgba({{ r }}, {{ g }}, {{ b }}, {{ overlay_op }}), rgba({{ r }}, {{ g }}, {{ b }}, {{ overlay_op }})), url('{{ section.settings.bg_image | image_url: width: 2000 }}') center center / cover no-repeat {% if section.settings.enable_fixed_bg %}fixed{% endif %} !important;
+    {% else %}
+      background: {{ section.settings.background_color }};
+    {% endif %}
   }
 
   .reviews-header-{{ section.id }} {
@@ -66,36 +76,27 @@
     fill: {{ section.settings.accent_color }};
   }
 
-  /* Carousel Grid & Cards */
-  .reviews-grid-{{ section.id }} {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  /* Side-by-side Carousel Track */
+  .reviews-slider-track-{{ section.id }} {
+    display: flex;
     gap: 2rem;
-    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 0.4rem 2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
-  @media screen and (max-width: 1100px) {
-    .reviews-grid-{{ section.id }} {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media screen and (max-width: 650px) {
-    .reviews-grid-{{ section.id }} {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      gap: 1.2rem;
-      padding-bottom: 1.5rem;
-    }
-    .review-card-{{ section.id }} {
-      flex: 0 0 85%;
-      scroll-snap-align: center;
-    }
+  .reviews-slider-track-{{ section.id }}::-webkit-scrollbar {
+    display: none;
   }
 
   .review-card-{{ section.id }} {
+    flex: 0 0 calc(25% - 1.5rem);
+    min-width: 280px;
+    scroll-snap-align: start;
     background: #ffffff;
     border-radius: 16px;
     padding: 2.5rem 2rem;
@@ -106,6 +107,19 @@
     justify-content: space-between;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .review-card-{{ section.id }} {
+      flex: 0 0 calc(45% - 1rem);
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .review-card-{{ section.id }} {
+      flex: 0 0 85%;
+      scroll-snap-align: center;
+    }
   }
 
   .review-card-{{ section.id }}:hover {
@@ -199,7 +213,7 @@
       </div>
     </div>
 
-    <div class="reviews-grid-{{ section.id }}">
+    <div class="reviews-slider-track-{{ section.id }}">
       {%- for block in section.blocks -%}
         <div class="review-card-{{ section.id }}" {{ block.shopify_attributes }}>
           <div class="review-stars-{{ section.id }}">
@@ -248,6 +262,35 @@
       "id": "title",
       "label": "Heading",
       "default": "What Our Customers Say"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Section background image",
+      "info": "Upload or select a custom background image for this section."
+    },
+    {
+      "type": "color",
+      "id": "bg_overlay_color",
+      "label": "Background overlay color",
+      "default": "#faf8f5"
+    },
+    {
+      "type": "range",
+      "id": "bg_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background overlay opacity",
+      "default": 80
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_fixed_bg",
+      "label": "Enable fixed background image",
+      "info": "Keeps the background image fixed in place while scrolling (Parallax effect).",
+      "default": false
     },
     {
       "type": "color",
