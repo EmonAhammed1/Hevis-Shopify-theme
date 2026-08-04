@@ -49,33 +49,98 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
+
+  /* Custom CTA Button Styling */
+  .image-features__btn-custom-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 380px;
+    padding: 1.5rem 3rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: {{ section.settings.button_text_color | default: '#ffffff' }};
+    background: linear-gradient(135deg, {{ section.settings.button_bg_color | default: section.settings.accent_color }}, #9a6f23);
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(198, 154, 71, 0.35);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .image-features__btn-custom-{{ section.id }}:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(198, 154, 71, 0.5);
+    filter: brightness(1.1);
+    color: #ffffff;
+  }
+
+  /* Image Slideshow Styles */
+  .image-features__media-wrapper-{{ section.id }} {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    min-height: 400px;
+    aspect-ratio: 1 / 1;
+    background: #f8f6f0;
+  }
+
+  .image-features__slide-{{ section.id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .image-features__slide-{{ section.id }}.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+    transform: scale(1);
+  }
 {%- endstyle -%}
 
 <div class="image-features image-features--{{ section.id }} section-{{ section.id }}-padding {{ section.settings.visibility }}">
   <div class="page-width">
     <div class="image-features__grid {% if section.settings.layout == 'right' %}image-features__grid--reverse{% endif %}">
       
-      {% comment %} Left Media Column {% endcomment %}
+      {% comment %} Left Media Column Slideshow {% endcomment %}
       <div class="image-features__media-col">
-        <div class="image-features__media-wrapper">
+        <div class="image-features__media-wrapper-{{ section.id }}" id="image-slideshow-{{ section.id }}" data-speed="{{ section.settings.slideshow_speed | default: 4 | times: 1000 }}">
+          
           {%- if section.settings.image != blank -%}
-            <img
-              src="{{ section.settings.image | image_url: width: 1200 }}"
-              alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
-              loading="lazy"
-              width="{{ section.settings.image.width }}"
-              height="{{ section.settings.image.height }}"
-              class="image-features__image"
-            >
+            <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="{{ section.settings.heading | escape }}" loading="lazy" class="image-features__slide-{{ section.id }} active">
           {%- else -%}
-            <img
-              src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1000&auto=format&fit=crop"
-              alt="{{ section.settings.heading | escape }}"
-              loading="lazy"
-              width="1000"
-              height="1000"
-              class="image-features__image"
-            >
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1000&auto=format&fit=crop" alt="{{ section.settings.heading | escape }}" loading="lazy" class="image-features__slide-{{ section.id }} active">
+          {%- endif -%}
+
+          {%- if section.settings.image_2 != blank -%}
+            <img src="{{ section.settings.image_2 | image_url: width: 1200 }}" alt="{{ section.settings.heading | escape }}" loading="lazy" class="image-features__slide-{{ section.id }}">
+          {%- endif -%}
+
+          {%- if section.settings.image_3 != blank -%}
+            <img src="{{ section.settings.image_3 | image_url: width: 1200 }}" alt="{{ section.settings.heading | escape }}" loading="lazy" class="image-features__slide-{{ section.id }}">
+          {%- endif -%}
+
+          {%- if section.settings.image_4 != blank -%}
+            <img src="{{ section.settings.image_4 | image_url: width: 1200 }}" alt="{{ section.settings.heading | escape }}" loading="lazy" class="image-features__slide-{{ section.id }}">
+          {%- endif -%}
+
+          {%- if section.settings.image_5 != blank -%}
+            <img src="{{ section.settings.image_5 | image_url: width: 1200 }}" alt="{{ section.settings.heading | escape }}" loading="lazy" class="image-features__slide-{{ section.id }}">
           {%- endif -%}
 
           {%- if section.settings.show_badge -%}
@@ -141,13 +206,21 @@
             {%- endfor -%}
           </div>
 
-          {%- if section.settings.button_label != blank -%}
-            <div class="image-features__button-wrapper">
-              <a href="{{ section.settings.button_link }}" class="button button--primary">
-                {{ section.settings.button_label | escape }}
-              </a>
-            </div>
+          {% comment %} CTA Product Button {% endcomment %}
+          {%- assign btn_label = section.settings.button_label -%}
+          {%- if btn_label == blank -%}
+            {%- assign btn_label = "BUY NOW - GET 50% OFF" -%}
           {%- endif -%}
+          {%- assign btn_url = section.settings.button_link -%}
+          {%- if btn_url == blank -%}
+            {%- assign btn_url = "/collections/all" -%}
+          {%- endif -%}
+
+          <div class="image-features__button-wrapper">
+            <a href="{{ btn_url }}" class="image-features__btn-custom-{{ section.id }}">
+              {{ btn_label | escape }}
+            </a>
+          </div>
 
         </div>
       </div>
@@ -155,6 +228,25 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.getElementById('image-slideshow-{{ section.id }}');
+    if (!wrapper) return;
+
+    const slides = wrapper.querySelectorAll('.image-features__slide-{{ section.id }}');
+    if (slides.length <= 1) return;
+
+    const speed = parseInt(wrapper.dataset.speed) || 4000;
+    let currentIndex = 0;
+
+    setInterval(function() {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
+    }, speed);
+  });
+</script>
 
 <style>
   .image-features {
@@ -230,26 +322,6 @@
     width: 100%;
   }
 
-  .image-features__media-wrapper {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  }
-
-  .image-features__image {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 600px;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-  }
-
-  .image-features__media-wrapper:hover .image-features__image {
-    transform: scale(1.02);
-  }
-
   /* Round Stamp Badge in Bottom-Left of Image */
   .image-features__badge {
     position: absolute;
@@ -264,7 +336,7 @@
     justify-content: center;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    z-index: 2;
+    z-index: 5;
   }
 
   .image-features__badge-content {
@@ -371,7 +443,7 @@
   }
 
   .image-features__button-wrapper {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 
   @media screen and (max-width: 749px) {
@@ -390,6 +462,10 @@
     .image-features__list-text {
       font-size: 1.35rem;
     }
+    .image-features__btn-custom-{{ section.id }} {
+      max-width: 100%;
+      width: 100%;
+    }
   }
 </style>
 
@@ -403,9 +479,43 @@
   },
   "settings": [
     {
+      "type": "header",
+      "content": "Multiple Feature Images (Slideshow)"
+    },
+    {
       "type": "image_picker",
       "id": "image",
-      "label": "Feature Image"
+      "label": "Feature Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Feature Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Feature Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Feature Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Feature Image 5"
+    },
+    {
+      "type": "range",
+      "id": "slideshow_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Image Slideshow Change Interval",
+      "default": 4
     },
     {
       "type": "select",
@@ -469,14 +579,31 @@
       "default": "<p>Each piece is crafted with precision and care, symbolizing a love that lasts forever.</p>"
     },
     {
+      "type": "header",
+      "content": "Product CTA Button"
+    },
+    {
       "type": "text",
       "id": "button_label",
-      "label": "Button Label"
+      "label": "Button Label",
+      "default": "BUY NOW - GET 50% OFF"
     },
     {
       "type": "url",
       "id": "button_link",
       "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#c69a47"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
     },
     {
       "type": "header",
