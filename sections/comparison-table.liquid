@@ -115,18 +115,39 @@
     -webkit-overflow-scrolling: touch;
   }
 
+  /* Comparison Table Global Card Border & Structure */
   .comparison-table,
   .comparison-table-{{ section.id }},
+  .content-and-comparison-table .comparison-table {
+    border: 1.5px solid rgba(198, 154, 71, 0.5) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.9) !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+  }
+
+  .comparison-table td,
+  .comparison-table th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+  }
+
+  .comparison-table tbody tr:last-child td {
+    border-bottom: none !important;
+  }
+
   /* Desktop Styling (>= 750px) */
   @media screen and (min-width: 750px) {
     #shopify-section-{{ section.id }} .page-width {
       max-width: 1400px !important;
       width: 100% !important;
+      padding-left: 2rem !important;
+      padding-right: 2rem !important;
     }
 
     .content-and-comparison-table .comparison-table-container {
       width: 100% !important;
       max-width: 1400px !important;
+      padding: 0.5rem !important;
     }
 
     .comparison-table,
@@ -142,7 +163,7 @@
     .comparison-table td:first-child {
       width: 60% !important;
       text-align: left !important;
-      padding: 0.9rem 2.2rem !important;
+      padding: 1rem 2.2rem !important;
       font-size: 1.55rem !important;
     }
 
@@ -152,21 +173,22 @@
     .comparison-table td:nth-child(3) {
       width: 20% !important;
       text-align: center !important;
-      padding: 0.9rem 1rem !important;
+      padding: 1rem 1rem !important;
     }
   }
 
   /* 100% Pixel Perfect Mobile Responsiveness (< 750px) */
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} .page-width {
-      padding-left: 0.8rem !important;
-      padding-right: 0.8rem !important;
+      padding-left: 1.2rem !important;
+      padding-right: 1.2rem !important;
     }
 
     .content-and-comparison-table .comparison-table-container {
       width: 100% !important;
       overflow-x: hidden !important;
-      padding: 0 !important;
+      padding: 0.2rem !important;
+      box-sizing: border-box !important;
     }
 
     .comparison-table,
@@ -176,8 +198,10 @@
       width: 100% !important;
       max-width: 100% !important;
       table-layout: fixed !important;
-      border-radius: 12px !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05) !important;
+      border: 1.5px solid rgba(198, 154, 71, 0.5) !important;
+      border-radius: 14px !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+      overflow: hidden !important;
     }
 
     .comparison-table th,
