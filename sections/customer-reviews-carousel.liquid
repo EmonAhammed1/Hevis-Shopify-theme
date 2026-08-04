@@ -76,7 +76,57 @@
     fill: {{ section.settings.accent_color }};
   }
 
-  /* Side-by-side Carousel Track */
+  /* Side-by-side Carousel Track & Navigation Wrapper */
+  .reviews-slider-wrapper-{{ section.id }} {
+    position: relative;
+    width: 100%;
+  }
+
+  .reviews-nav-btn-{{ section.id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .reviews-nav-btn-{{ section.id }}:hover {
+    background: #ffffff;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    color: {{ section.settings.accent_color }};
+  }
+
+  .reviews-nav-prev-{{ section.id }} {
+    left: -20px;
+  }
+
+  .reviews-nav-next-{{ section.id }} {
+    right: -20px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .reviews-nav-prev-{{ section.id }} {
+      left: -5px;
+    }
+    .reviews-nav-next-{{ section.id }} {
+      right: -5px;
+    }
+  }
+
   .reviews-slider-track-{{ section.id }} {
     display: flex;
     gap: 2rem;
@@ -87,6 +137,12 @@
     padding: 0.5rem 0.4rem 2rem;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .reviews-slider-track-{{ section.id }}:active {
+    cursor: grabbing;
   }
 
   .reviews-slider-track-{{ section.id }}::-webkit-scrollbar {
@@ -213,39 +269,102 @@
       </div>
     </div>
 
-    <div class="reviews-slider-track-{{ section.id }}">
-      {%- for block in section.blocks -%}
-        <div class="review-card-{{ section.id }}" {{ block.shopify_attributes }}>
-          <div class="review-stars-{{ section.id }}">
-            ★★★★★
-          </div>
-          {%- if block.settings.headline != blank -%}
-            <div class="review-headline-{{ section.id }}">“{{ block.settings.headline }}”</div>
-          {%- endif -%}
-          {%- if block.settings.body != blank -%}
-            <div class="review-body-{{ section.id }}">{{ block.settings.body }}</div>
-          {%- endif -%}
-          <div class="review-author-{{ section.id }}">
-            {%- if block.settings.author_image != blank -%}
-              {{ block.settings.author_image | image_url: width: 100 | image_tag: class: 'review-avatar-banner', loading: 'lazy' }}
-            {%- else -%}
-              <img class="review-avatar-{{ section.id }}" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="{{ block.settings.author_name }}" width="48" height="48" loading="lazy">
+    <div class="reviews-slider-wrapper-{{ section.id }}">
+      <button class="reviews-nav-btn-{{ section.id }} reviews-nav-prev-{{ section.id }}" aria-label="Previous review">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+
+      <div class="reviews-slider-track-{{ section.id }}" id="reviews-track-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          <div class="review-card-{{ section.id }}" {{ block.shopify_attributes }}>
+            <div class="review-stars-{{ section.id }}">
+              ★★★★★
+            </div>
+            {%- if block.settings.headline != blank -%}
+              <div class="review-headline-{{ section.id }}">“{{ block.settings.headline }}”</div>
             {%- endif -%}
-            <div class="review-author-info-{{ section.id }}">
-              <div class="review-author-name-{{ section.id }}">{{ block.settings.author_name }}</div>
-              <div class="review-verified-{{ section.id }}">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                Verified Buyer
+            {%- if block.settings.body != blank -%}
+              <div class="review-body-{{ section.id }}">{{ block.settings.body }}</div>
+            {%- endif -%}
+            <div class="review-author-{{ section.id }}">
+              {%- if block.settings.author_image != blank -%}
+                {{ block.settings.author_image | image_url: width: 100 | image_tag: class: 'review-avatar-banner', loading: 'lazy' }}
+              {%- else -%}
+                <img class="review-avatar-{{ section.id }}" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="{{ block.settings.author_name }}" width="48" height="48" loading="lazy">
+              {%- endif -%}
+              <div class="review-author-info-{{ section.id }}">
+                <div class="review-author-name-{{ section.id }}">{{ block.settings.author_name }}</div>
+                <div class="review-verified-{{ section.id }}">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                  Verified Buyer
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      {%- endfor -%}
+        {%- endfor -%}
+      </div>
+
+      <button class="reviews-nav-btn-{{ section.id }} reviews-nav-next-{{ section.id }}" aria-label="Next review">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </button>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const track = document.getElementById('reviews-track-{{ section.id }}');
+    const prevBtn = document.querySelector('.reviews-nav-prev-{{ section.id }}');
+    const nextBtn = document.querySelector('.reviews-nav-next-{{ section.id }}');
+
+    if (!track) return;
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        track.scrollBy({ left: -340, behavior: 'smooth' });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        track.scrollBy({ left: 340, behavior: 'smooth' });
+      });
+    }
+
+    // Touch & Mouse Drag Sliding
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.8;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  });
+</script>
 
 {% schema %}
 {
