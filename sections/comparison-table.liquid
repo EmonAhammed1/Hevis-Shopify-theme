@@ -68,7 +68,12 @@
   }
 
   .comparison-table-section-bg-{{ section.id }} {
-    background: linear-gradient(rgba(255, 252, 248, 0.62), rgba(255, 252, 248, 0.62)), url('{{ "luxury_comparison_bg.jpg" | asset_url }}') center center / cover no-repeat !important;
+    {% if section.settings.bg_image != blank %}
+      {% assign overlay_op = section.settings.bg_overlay_opacity | divided_by: 100.0 %}
+      background: linear-gradient(rgba(255, 252, 248, {{ overlay_op }}), rgba(255, 252, 248, {{ overlay_op }})), url('{{ section.settings.bg_image | image_url: width: 2000 }}') center center / cover no-repeat !important;
+    {% else %}
+      background: linear-gradient(rgba(255, 252, 248, 0.62), rgba(255, 252, 248, 0.62)), url('{{ "luxury_comparison_bg.jpg" | asset_url }}') center center / cover no-repeat !important;
+    {% endif %}
   }
 
   /* Section container & wide table styling */
@@ -491,6 +496,22 @@
 {
   "name": "Comparison table",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Section background image",
+      "info": "Upload or select a custom background image for this comparison section."
+    },
+    {
+      "type": "range",
+      "id": "bg_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background overlay opacity",
+      "default": 62
+    },
     {
       "type": "checkbox",
       "id": "display_id",
