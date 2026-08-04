@@ -141,17 +141,40 @@
     transform: translateX(3px) !important;
   }
 
+  /* Remove duplicate/double borders on newsletter inputs and buttons */
+  .footer__newsletter .field::before,
+  .footer__newsletter .field::after,
+  .footer__newsletter .field__input::before,
+  .footer__newsletter .field__input::after,
+  .footer__newsletter .button::before,
+  .footer__newsletter .button::after,
+  .footer__newsletter button::before,
+  .footer__newsletter button::after {
+    display: none !important;
+    content: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .footer__newsletter .field {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
   .footer__newsletter .field__input {
     background: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid rgba(198, 154, 71, 0.3) !important;
+    border: 1.5px solid rgba(198, 154, 71, 0.4) !important;
     border-radius: 50px !important;
     color: #ffffff !important;
     padding-left: 2rem !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   .footer__newsletter .field__input:focus {
     border-color: #c69a47 !important;
     box-shadow: 0 0 15px rgba(198, 154, 71, 0.3) !important;
+    outline: none !important;
   }
 
   .newsletter__solid-btn {
@@ -164,6 +187,8 @@
     box-shadow: 0 8px 20px rgba(198, 154, 71, 0.3) !important;
     transition: all 0.3s ease !important;
     margin-top: 1rem !important;
+    border: none !important;
+    outline: none !important;
   }
 
   .newsletter__solid-btn:hover {
