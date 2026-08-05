@@ -93,15 +93,6 @@
     "6aa09428-a417-429d-9159-a4e8afd49590": {
       "type": "icon-bar",
       "blocks": {
-        "column-1": {
-          "type": "column",
-          "settings": {
-            "icon": "workspace_premium",
-            "filled_icon": false,
-            "title": "PREMIUM DESIGN",
-            "text": "<p>Quality Tested</p>"
-          }
-        },
         "column-2": {
           "type": "column",
           "settings": {
@@ -118,6 +109,15 @@
             "filled_icon": false,
             "title": "GIFT BOX INCLUDED",
             "text": "<p>Ready to Give</p>"
+          }
+        },
+        "column-1": {
+          "type": "column",
+          "settings": {
+            "icon": "workspace_premium",
+            "filled_icon": false,
+            "title": "PREMIUM DESIGN",
+            "text": "<p>Quality Tested</p>"
           }
         },
         "column-4": {
@@ -216,7 +216,7 @@
         "feature_4": {
           "type": "feature_item",
           "settings": {
-            "custom_icon": "",
+            "custom_icon": "shopify://shop_images/secure.png",
             "icon": "lock",
             "title": "Secure Checkout",
             "subtitle": "100% Protected",
