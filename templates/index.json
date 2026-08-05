@@ -128,23 +128,13 @@
             "title": "SECURE CHECKOUT",
             "text": "<p>SSL Encrypted</p>"
           }
-        },
-        "column-5": {
-          "type": "column",
-          "settings": {
-            "icon": "verified",
-            "filled_icon": false,
-            "title": "LIFETIME WARRANTY",
-            "text": "<p>100% Guaranteed</p>"
-          }
         }
       },
       "block_order": [
-        "column-1",
         "column-2",
         "column-3",
-        "column-4",
-        "column-5"
+        "column-1",
+        "column-4"
       ],
       "settings": {
         "display_id": false,
@@ -165,7 +155,7 @@
         "transparent_arrows": true,
         "dots_color_scheme": "inverse",
         "desktop_full_page": false,
-        "columns_desktop": 5,
+        "columns_desktop": 4,
         "slider_desktop": false,
         "per_move_desktop": 1,
         "desktop_spacing": 20,
@@ -232,24 +222,13 @@
             "subtitle": "Built to Last",
             "link": ""
           }
-        },
-        "feature_5": {
-          "type": "feature_item",
-          "settings": {
-            "custom_icon": "shopify://shop_images/medal.png",
-            "icon": "verified",
-            "title": "Lifetime Guarantee",
-            "subtitle": "Crafted to Last",
-            "link": ""
-          }
         }
       },
       "block_order": [
         "feature_1",
         "feature_2",
         "feature_3",
-        "feature_4",
-        "feature_5"
+        "feature_4"
       ],
       "settings": {
         "title": "Made to Celebrate Love",
@@ -262,7 +241,7 @@
         "subtitle_font_size": 1.4,
         "icon_size_desktop": 60,
         "icon_size_mobile": 44,
-        "columns_desktop": 5,
+        "columns_desktop": 4,
         "mobile_layout": "2",
         "full_width": false,
         "show_dividers": true,
