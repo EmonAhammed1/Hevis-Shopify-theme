@@ -107,8 +107,8 @@
           "settings": {
             "icon": "local_shipping",
             "filled_icon": false,
-            "title": "FREE SHIPPING",
-            "text": "<p>On All Orders</p>"
+            "title": "FREE DELIVERY",
+            "text": "<p>Worldwide</p>"
           }
         },
         "column-3": {
@@ -134,8 +134,8 @@
           "settings": {
             "icon": "verified",
             "filled_icon": false,
-            "title": "30-DAY RETURNS",
-            "text": "<p>Hassle Free</p>"
+            "title": "QUALITY GUARANTEED",
+            "text": "<p>100% Verified</p>"
           }
         }
       },
@@ -239,7 +239,7 @@
             "custom_icon": "shopify://shop_images/medal.png",
             "icon": "verified",
             "title": "Satisfaction Guarantee",
-            "subtitle": "30-Day Promise",
+            "subtitle": "100% Quality",
             "link": ""
           }
         }
