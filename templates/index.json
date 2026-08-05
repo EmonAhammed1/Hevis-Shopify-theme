@@ -98,8 +98,8 @@
           "settings": {
             "icon": "workspace_premium",
             "filled_icon": false,
-            "title": "PREMIUM QUALITY",
-            "text": "<p>Crafted to Perfection</p>"
+            "title": "PREMIUM DESIGN",
+            "text": "<p>Quality Tested</p>"
           }
         },
         "column-2": {
@@ -116,8 +116,8 @@
           "settings": {
             "icon": "card_giftcard",
             "filled_icon": false,
-            "title": "LUXURY PACKAGING",
-            "text": "<p>Gift Ready</p>"
+            "title": "GIFT BOX INCLUDED",
+            "text": "<p>Ready to Give</p>"
           }
         },
         "column-4": {
@@ -125,8 +125,8 @@
           "settings": {
             "icon": "lock",
             "filled_icon": false,
-            "title": "SECURE PAYMENT",
-            "text": "<p>100% Protected</p>"
+            "title": "SECURE CHECKOUT",
+            "text": "<p>SSL Encrypted</p>"
           }
         },
         "column-5": {
@@ -134,8 +134,8 @@
           "settings": {
             "icon": "verified",
             "filled_icon": false,
-            "title": "QUALITY GUARANTEED",
-            "text": "<p>100% Verified</p>"
+            "title": "LIFETIME WARRANTY",
+            "text": "<p>100% Guaranteed</p>"
           }
         }
       },
