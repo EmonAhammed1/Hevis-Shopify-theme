@@ -329,64 +329,64 @@
     "sentiment_slider_section": {
       "type": "sentiment-slider",
       "blocks": {
-        "card_2": {
-          "type": "sentiment_card",
-          "settings": {
-            "image": "shopify://shop_images/asset_782_transformation_1726.jpg",
-            "title": "For Your Girlfriend",
-            "subtitle": "A gift she'll cherish",
-            "link": "/collections/all"
-          }
-        },
         "card_1": {
           "type": "sentiment_card",
           "settings": {
             "image": "shopify://shop_images/asset_782_transformation_1723.jpg",
             "title": "For Your Wife",
             "subtitle": "Celebrate your forever love",
-            "link": "/collections/all"
+            "link": "/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510"
+          }
+        },
+        "card_2": {
+          "type": "sentiment_card",
+          "settings": {
+            "image": "shopify://shop_images/asset_782_transformation_1726.jpg",
+            "title": "Birthday Gift",
+            "subtitle": "Make her day extra special",
+            "link": "/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510"
           }
         },
         "card_3": {
           "type": "sentiment_card",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_12.05.01_PM_9.jpg",
-            "title": "For Your Mom",
-            "subtitle": "Thank her for everything",
-            "link": "/collections/all"
+            "title": "Anniversary Gift",
+            "subtitle": "Celebrate your love story",
+            "link": "/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510"
           }
         },
         "sentiment_card_7JLMWx": {
           "type": "sentiment_card",
           "settings": {
             "image": "shopify://shop_images/asset_783_transformation_11302.jpg",
-            "title": "For Your Wife",
-            "subtitle": "Celebrate your forever love",
-            "link": ""
+            "title": "Gift For Her",
+            "subtitle": "A present she will treasure",
+            "link": "/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510"
           }
         },
         "card_4": {
           "type": "sentiment_card",
           "settings": {
             "image": "shopify://shop_images/asset_1583_transformation_9214.jpg",
-            "title": "Birthday Gifts",
-            "subtitle": "Make her day extra special",
-            "link": "/collections/all"
+            "title": "For Your Wife",
+            "subtitle": "Express your eternal love",
+            "link": "/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510"
           }
         },
         "sentiment_card_wh33fL": {
           "type": "sentiment_card",
           "settings": {
             "image": "shopify://shop_images/asset_1582_transformation_17195.jpg",
-            "title": "For Your Wife",
-            "subtitle": "Celebrate your forever love",
-            "link": ""
+            "title": "Special Occasion",
+            "subtitle": "Make every moment memorable",
+            "link": "/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510"
           }
         }
       },
       "block_order": [
-        "card_2",
         "card_1",
+        "card_2",
         "card_3",
         "sentiment_card_7JLMWx",
         "card_4",
