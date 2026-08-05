@@ -39,7 +39,7 @@
             "layout": "price_first",
             "price_color": "accent-1",
             "compare_price_color": "text",
-            "displayed_badge": "sale",
+            "displayed_badge": "none",
             "icon_scale": 140,
             "custom_badge_text": "[icon_1] SPECIAL OFFER",
             "icon_1": "redeem",
@@ -54,7 +54,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_types": "pills, dropdown, dropdown",
-            "custom_labels": "[name] - [selected]",
+            "custom_labels": "",
             "skip_unavailable": false,
             "swatches_size": "medium",
             "swatches_custom_colors": "disabled",
@@ -335,7 +335,7 @@
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "<p><strong>Unboxing Experience:</strong><br>• Every order arrives in an elegant luxury gift box ready for gifting.<br>• Includes a custom sentimental love message card tucked inside.<br>• Premium Tarnish-Resistant Finish for lasting daily wear.<br>• 24/7 Dedicated Support: support@hevisjewels.com.</p>",
+            "content": "<p><strong>Unboxing Experience:</strong><br/>• Every order arrives in an elegant luxury gift box ready for gifting.<br/>• Includes a custom sentimental love message card tucked inside.<br/>• Premium Tarnish-Resistant Finish for lasting daily wear.<br/>• 24/7 Dedicated Support: support@hevisjewels.com.</p>",
             "page": "",
             "margin_top": 12,
             "margin_bottom": 0
@@ -789,8 +789,8 @@
         "judge_me_reviews_review_widget_Waya9b"
       ],
       "custom_css": [
-        "&, .shopify-app-block, #judgeme_product_reviews, .jdgm-widget, .jdgm-rev-widg, .jdgm-rev-widg__header, .jdgm-rev-widg__body, .jdgm-rev-widg__reviews { background-color: #FAF8F5 !important; background: #FAF8F5 !important; color: #1A1A1A !important; }",
-        ".jdgm-rev-widg__title, .jdgm-rev-widg__summary-text, .jdgm-rev__title, .jdgm-rev__body, .jdgm-rev__author-name, .jdgm-rev__timestamp { color: #1A1A1A !important; }"
+        "&,.shopify-app-block,#judgeme_product_reviews,.jdgm-widget,.jdgm-rev-widg,.jdgm-rev-widg__header,.jdgm-rev-widg__body,.jdgm-rev-widg__reviews {background-color: #faf8f5 !important; background: #faf8f5 !important; color: #1a1a1a !important;}",
+        ".jdgm-rev-widg__title,.jdgm-rev-widg__summary-text,.jdgm-rev__title,.jdgm-rev__body,.jdgm-rev__author-name,.jdgm-rev__timestamp {color: #1a1a1a !important;}"
       ],
       "settings": {
         "display_id": false,
