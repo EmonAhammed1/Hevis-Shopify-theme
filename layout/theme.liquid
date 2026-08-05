@@ -415,6 +415,14 @@
           background-color: {{ settings.scrollbar_thumb_color }};
         }
       {% endif %}
+
+      /* Outer Full-Width Section Background Fix for Apps & Judge.me Review Widget */
+      .shopify-section:has(#judgeme_product_reviews),
+      .shopify-section:has(.jdgm-widget),
+      .shopify-section:has(.jdgm-rev-widg) {
+        background-color: #FAF8F5 !important;
+        background: #FAF8F5 !important;
+      }
     {% endstyle %}
 
     <noscript>

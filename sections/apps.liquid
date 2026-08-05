@@ -1,3 +1,10 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    background-color: #FAF8F5 !important;
+    background: #FAF8F5 !important;
+  }
+{%- endstyle -%}
+
 <div class="{% if section.settings.include_margins %}page-width{% endif %}">
   {% if section.settings.display_id %}
     <copy-button class="section-id-btn button" data-content="#shopify-section-{{ section.id }}" data-success="false">
