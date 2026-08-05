@@ -790,8 +790,7 @@
       ],
       "custom_css": [
         "&, .shopify-app-block, #judgeme_product_reviews, .jdgm-widget, .jdgm-rev-widg, .jdgm-rev-widg__header, .jdgm-rev-widg__body, .jdgm-rev-widg__reviews { background-color: #FAF8F5 !important; background: #FAF8F5 !important; color: #1A1A1A !important; }",
-        ".jdgm-rev-widg__title, .jdgm-rev-widg__summary-text, .jdgm-rev__title, .jdgm-rev__body, .jdgm-rev__author-name, .jdgm-rev__timestamp { color: #1A1A1A !important; }",
-        ".jdgm-rev { background-color: #ffffff !important; border: 1px solid rgba(200, 161, 90, 0.3) !important; border-radius: 12px !important; }"
+        ".jdgm-rev-widg__title, .jdgm-rev-widg__summary-text, .jdgm-rev__title, .jdgm-rev__body, .jdgm-rev__author-name, .jdgm-rev__timestamp { color: #1A1A1A !important; }"
       ],
       "settings": {
         "display_id": false,
