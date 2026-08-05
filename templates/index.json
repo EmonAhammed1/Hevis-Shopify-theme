@@ -216,10 +216,10 @@
         "feature_4": {
           "type": "feature_item",
           "settings": {
-            "custom_icon": "shopify://shop_images/shield_1.png",
-            "icon": "shield",
-            "title": "Tarnish Resistant",
-            "subtitle": "Built to Last",
+            "custom_icon": "",
+            "icon": "lock",
+            "title": "Secure Checkout",
+            "subtitle": "100% Protected",
             "link": ""
           }
         }
