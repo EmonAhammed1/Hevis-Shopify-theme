@@ -328,14 +328,14 @@
         "collapsible_tab_guarantee": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Lifetime Guarantee & Easy Returns",
+            "heading": "Luxury Packaging & Presentation",
             "heading_size": "medium",
-            "icon": "check_mark",
+            "icon": "card_giftcard",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "<p><strong>Our Promise to You:</strong><br>• 100% Satisfaction Guarantee: Crafted to perfection with premium materials.<br>• Lifetime Tarnish-Free Promise.<br>• 24/7 Dedicated Support: support@hevisjewels.com.</p>",
+            "content": "<p><strong>Unboxing Experience:</strong><br>• Every order arrives in an elegant luxury gift box ready for gifting.<br>• Includes a custom sentimental love message card tucked inside.<br>• Premium Tarnish-Resistant Finish for lasting daily wear.<br>• 24/7 Dedicated Support: support@hevisjewels.com.</p>",
             "page": "",
             "margin_top": 12,
             "margin_bottom": 0
