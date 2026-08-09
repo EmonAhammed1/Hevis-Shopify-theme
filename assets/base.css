@@ -665,6 +665,7 @@ sticky-header {
 /* Mobile: Always White text & Gold icons on dark mobile background (#0c0b0e) */
 @media screen and (max-width: 749px) {
   .icon-bar-luxury .multicolumn-card__info h3,
+  .icon-bar-luxury[data-active-slide] .multicolumn-card__info h3,
   .icon-bar-luxury.color-custom .multicolumn-card__info h3 {
     color: #ffffff !important;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95) !important;
@@ -673,13 +674,17 @@ sticky-header {
   .icon-bar-luxury .multicolumn-card__info .rte,
   .icon-bar-luxury .multicolumn-card__info .rte p,
   .icon-bar-luxury .multicolumn-card__info p,
+  .icon-bar-luxury[data-active-slide] .multicolumn-card__info .rte,
+  .icon-bar-luxury[data-active-slide] .multicolumn-card__info .rte p,
+  .icon-bar-luxury[data-active-slide] .multicolumn-card__info p,
   .icon-bar-luxury.color-custom .multicolumn-card__info p {
-    color: #e2e8f0 !important;
+    color: #ffffff !important;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95) !important;
   }
 
   .icon-bar-luxury .icon-bar-card__icon .material-icon,
   .icon-bar-luxury .material-icon,
+  .icon-bar-luxury[data-active-slide] .material-icon,
   .icon-bar-luxury.color-custom .material-icon {
     color: #f3c759 !important;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.9)) !important;
