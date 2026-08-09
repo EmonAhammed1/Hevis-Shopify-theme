@@ -252,6 +252,7 @@ html {scroll-behavior: smooth;}img, video {max-width: 100%;height: auto;vertical
 .slideshow__text .banner__text p {
   font-family: var(--font-body-family), sans-serif !important;
   font-size: clamp(1.4rem, 1.7vw, 1.7rem) !important;
+  font-weight: 600 !important;
   color: #e2e8f0 !important;
   line-height: 1.5 !important;
   max-width: 540px !important;
