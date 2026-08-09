@@ -697,6 +697,12 @@
         }
       });
       
+      // Update active slide index on icon bar for dynamic text color adaptation!
+      const iconBar = document.querySelector('.icon-bar-luxury');
+      if (iconBar) {
+        iconBar.setAttribute('data-active-slide', index);
+      }
+
       // Re-trigger icon bar animations to blur and load one by one on slide change!
       const iconBarCards = document.querySelectorAll('.icon-bar-luxury .icon-bar-card');
       iconBarCards.forEach((card, idx) => {
