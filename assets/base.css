@@ -662,37 +662,50 @@ sticky-header {
   }
 }
 
-/* Mobile: Always Golden title, White subtext & Gold icons on dark mobile background (#0c0b0e) */
+/* Mobile: Slide-Adaptive Icon Bar Theme */
 @media screen and (max-width: 749px) {
-  .icon-bar-luxury .multicolumn-card__info h3,
-  .icon-bar-luxury[data-active-slide] .multicolumn-card__info h3,
-  .icon-bar-luxury.color-custom .multicolumn-card__info h3,
-  .icon-bar-card h3 {
+  /* Slide 1 (Active slide 0): Light Champagne Icon Bar */
+  .icon-bar-luxury[data-active-slide="0"] {
+    background: #ede5d6 !important;
+  }
+  .icon-bar-luxury[data-active-slide="0"] .multicolumn-card__info h3,
+  .icon-bar-luxury[data-active-slide="0"] .icon-bar-card h3 {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-shadow: none !important;
+  }
+  .icon-bar-luxury[data-active-slide="0"] .multicolumn-card__info p,
+  .icon-bar-luxury[data-active-slide="0"] .icon-bar-card p {
+    color: #2b2825 !important;
+    -webkit-text-fill-color: #2b2825 !important;
+    text-shadow: none !important;
+  }
+  .icon-bar-luxury[data-active-slide="0"] .material-icon,
+  .icon-bar-luxury[data-active-slide="0"] .icon-bar-card svg {
+    color: #ab7f24 !important;
+    fill: #ab7f24 !important;
+    -webkit-text-fill-color: #ab7f24 !important;
+    filter: none !important;
+  }
+
+  /* Slide 2 & non-first slides: Dark Onyx Icon Bar */
+  .icon-bar-luxury:not([data-active-slide="0"]) {
+    background: #0e0d10 !important;
+  }
+  .icon-bar-luxury:not([data-active-slide="0"]) .multicolumn-card__info h3,
+  .icon-bar-luxury:not([data-active-slide="0"]) .icon-bar-card h3 {
     color: #f3c759 !important;
     -webkit-text-fill-color: #f3c759 !important;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95) !important;
   }
-
-  .icon-bar-luxury .multicolumn-card__info .rte,
-  .icon-bar-luxury .multicolumn-card__info .rte p,
-  .icon-bar-luxury .multicolumn-card__info p,
-  .icon-bar-luxury[data-active-slide] .multicolumn-card__info .rte,
-  .icon-bar-luxury[data-active-slide] .multicolumn-card__info .rte p,
-  .icon-bar-luxury[data-active-slide] .multicolumn-card__info p,
-  .icon-bar-luxury.color-custom .multicolumn-card__info p,
-  .icon-bar-card p,
-  .icon-bar-card .rte {
+  .icon-bar-luxury:not([data-active-slide="0"]) .multicolumn-card__info p,
+  .icon-bar-luxury:not([data-active-slide="0"]) .icon-bar-card p {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95) !important;
   }
-
-  .icon-bar-luxury .icon-bar-card__icon .material-icon,
-  .icon-bar-luxury .material-icon,
-  .icon-bar-luxury[data-active-slide] .material-icon,
-  .icon-bar-luxury.color-custom .material-icon,
-  .icon-bar-card .material-icon,
-  .icon-bar-card svg {
+  .icon-bar-luxury:not([data-active-slide="0"]) .material-icon,
+  .icon-bar-luxury:not([data-active-slide="0"]) .icon-bar-card svg {
     color: #f3c759 !important;
     fill: #f3c759 !important;
     -webkit-text-fill-color: #f3c759 !important;
