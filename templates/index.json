@@ -12,36 +12,6 @@
     "cfca4268-6358-426c-98ab-d292aeef11e5": {
       "type": "slideshow",
       "blocks": {
-        "template--21507361505575__cfca4268-6358-426c-98ab-d292aeef11e5-slide-1": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/hero-bg.webp",
-            "mobile_image": "shopify://shop_images/Hero_bg_mobile.webp",
-            "image_overlay_opacity": 0,
-            "heading": "<em>A Gift That</em> SPEAKS FROM THE HEART",
-            "title_highlight_color": "#dfb256",
-            "heading_size": "h0",
-            "subheading": "Premium Diamond Love Necklace – a timeless symbol of love, beautifully crafted for the one who means everything.",
-            "button_label": "BUY NOW",
-            "link": "https://www.hevis.store/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510",
-            "button_style_secondary": false,
-            "atc_button_label": "",
-            "atc_product": "",
-            "atc_skip_cart": false,
-            "box_align": "middle-left",
-            "show_text_box": false,
-            "text_alignment": "left",
-            "color_scheme": "custom",
-            "transparent_container_color": "transparent",
-            "text_alignment_mobile": "left",
-            "custom_colors_background": "#000000",
-            "custom_gradient_background": "",
-            "custom_colors_text": "#ffffff",
-            "custom_colors_solid_button_background": "#e6c268",
-            "custom_colors_solid_button_text": "#120e06",
-            "custom_colors_outline_button": "#e6c268"
-          }
-        },
         "slide_tniqXf": {
           "type": "slide",
           "settings": {
@@ -71,11 +41,41 @@
             "custom_colors_solid_button_text": "#120e06",
             "custom_colors_outline_button": "#e6c268"
           }
+        },
+        "template--21507361505575__cfca4268-6358-426c-98ab-d292aeef11e5-slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_9_2026_08_43_46_AM.webp",
+            "mobile_image": "shopify://shop_images/ChatGPT_Image_Aug_9_2026_09_00_57_AM.webp",
+            "image_overlay_opacity": 0,
+            "heading": "<em>A Gift That</em> SPEAKS FROM THE HEART",
+            "title_highlight_color": "#dfb256",
+            "heading_size": "h0",
+            "subheading": "Premium Diamond Love Necklace – a timeless symbol of love, beautifully crafted for the one who means everything.",
+            "button_label": "BUY NOW",
+            "link": "https://www.hevis.store/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510",
+            "button_style_secondary": false,
+            "atc_button_label": "",
+            "atc_product": "",
+            "atc_skip_cart": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "color_scheme": "custom",
+            "transparent_container_color": "transparent",
+            "text_alignment_mobile": "left",
+            "custom_colors_background": "#000000",
+            "custom_gradient_background": "",
+            "custom_colors_text": "#ffffff",
+            "custom_colors_solid_button_background": "#e6c268",
+            "custom_colors_solid_button_text": "#120e06",
+            "custom_colors_outline_button": "#e6c268"
+          }
         }
       },
       "block_order": [
-        "template--21507361505575__cfca4268-6358-426c-98ab-d292aeef11e5-slide-1",
-        "slide_tniqXf"
+        "slide_tniqXf",
+        "template--21507361505575__cfca4268-6358-426c-98ab-d292aeef11e5-slide-1"
       ],
       "settings": {
         "visibility": "always-display",
