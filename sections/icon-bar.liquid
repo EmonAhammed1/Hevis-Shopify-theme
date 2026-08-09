@@ -36,28 +36,65 @@
     --gradient-background: {% if section.settings.custom_cards_gradient_background != blank %}{{ section.settings.custom_cards_gradient_background }}{% else %}{{ section.settings.custom_cards_colors_background }}{% endif %};
     --color-foreground: {{ section.settings.custom_cards_colors_text.red }}, {{ section.settings.custom_cards_colors_text.green }}, {{ section.settings.custom_cards_colors_text.blue }};
   }
-  {%- if section.settings.card_title_color != blank and section.settings.card_title_color != 'rgba(0,0,0,0)' -%}
+  @media screen and (min-width: 750px) {
+    {%- if section.settings.card_title_color != blank and section.settings.card_title_color != 'rgba(0,0,0,0)' -%}
+      .color-scheme-{{ section.id }} .multicolumn-card__info h3,
+      .color-scheme-{{ section.id }}.icon-bar-luxury .multicolumn-card__info h3 {
+        color: {{ section.settings.card_title_color }} !important;
+        text-shadow: none !important;
+      }
+    {%- endif -%}
+    {%- if section.settings.card_subtext_color != blank and section.settings.card_subtext_color != 'rgba(0,0,0,0)' -%}
+      .color-scheme-{{ section.id }} .multicolumn-card__info p,
+      .color-scheme-{{ section.id }} .multicolumn-card__info .rte,
+      .color-scheme-{{ section.id }}.icon-bar-luxury .multicolumn-card__info p {
+        color: {{ section.settings.card_subtext_color }} !important;
+        text-shadow: none !important;
+      }
+    {%- endif -%}
+    {%- if section.settings.custom_icon_color != blank and section.settings.custom_icon_color != 'rgba(0,0,0,0)' -%}
+      .color-scheme-{{ section.id }} .material-icon,
+      .color-scheme-{{ section.id }}.icon-bar-luxury .material-icon {
+        color: {{ section.settings.custom_icon_color }} !important;
+        filter: none !important;
+      }
+    {%- endif -%}
+  }
+
+  @media screen and (max-width: 749px) {
     .color-scheme-{{ section.id }} .multicolumn-card__info h3,
-    .color-scheme-{{ section.id }}.icon-bar-luxury .multicolumn-card__info h3 {
-      color: {{ section.settings.card_title_color }} !important;
-      text-shadow: none !important;
+    .color-scheme-{{ section.id }}.icon-bar-luxury .multicolumn-card__info h3,
+    .cards-color-scheme-{{ section.id }} .multicolumn-card__info h3,
+    .icon-bar-luxury .multicolumn-card__info h3,
+    .icon-bar-card h3 {
+      color: #f3c759 !important;
+      -webkit-text-fill-color: #f3c759 !important;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95) !important;
     }
-  {%- endif -%}
-  {%- if section.settings.card_subtext_color != blank and section.settings.card_subtext_color != 'rgba(0,0,0,0)' -%}
     .color-scheme-{{ section.id }} .multicolumn-card__info p,
     .color-scheme-{{ section.id }} .multicolumn-card__info .rte,
-    .color-scheme-{{ section.id }}.icon-bar-luxury .multicolumn-card__info p {
-      color: {{ section.settings.card_subtext_color }} !important;
-      text-shadow: none !important;
+    .color-scheme-{{ section.id }}.icon-bar-luxury .multicolumn-card__info p,
+    .cards-color-scheme-{{ section.id }} .multicolumn-card__info p,
+    .cards-color-scheme-{{ section.id }} .multicolumn-card__info .rte,
+    .icon-bar-luxury .multicolumn-card__info p,
+    .icon-bar-card p,
+    .icon-bar-card .rte {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95) !important;
     }
-  {%- endif -%}
-  {%- if section.settings.custom_icon_color != blank and section.settings.custom_icon_color != 'rgba(0,0,0,0)' -%}
     .color-scheme-{{ section.id }} .material-icon,
-    .color-scheme-{{ section.id }}.icon-bar-luxury .material-icon {
-      color: {{ section.settings.custom_icon_color }} !important;
-      filter: none !important;
+    .color-scheme-{{ section.id }}.icon-bar-luxury .material-icon,
+    .cards-color-scheme-{{ section.id }} .material-icon,
+    .icon-bar-luxury .material-icon,
+    .icon-bar-card .material-icon,
+    .icon-bar-card svg {
+      color: #f3c759 !important;
+      fill: #f3c759 !important;
+      -webkit-text-fill-color: #f3c759 !important;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.9)) !important;
     }
-  {%- endif -%}
+  }
   {%- if section.settings.custom_card_bg_color != blank and section.settings.custom_card_bg_color != 'rgba(0,0,0,0)' -%}
     .color-scheme-{{ section.id }}.icon-bar-luxury .icon-bar-card {
       background: {{ section.settings.custom_card_bg_color }} !important;

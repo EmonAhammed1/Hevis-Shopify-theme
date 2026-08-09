@@ -177,13 +177,13 @@
         "padding_bottom": 20,
         "custom_colors_background": "#08080c",
         "custom_gradient_background": "",
-        "custom_colors_text": "#000000",
+        "custom_colors_text": "#ffffff",
         "custom_cards_colors_background": "rgba(0,0,0,0)",
         "custom_cards_gradient_background": "",
-        "custom_cards_colors_text": "#000000",
-        "card_title_color": "#000000",
-        "card_subtext_color": "#111111",
-        "custom_icon_color": "#000000"
+        "custom_cards_colors_text": "#ffffff",
+        "card_title_color": "",
+        "card_subtext_color": "",
+        "custom_icon_color": ""
       }
     },
     "feature_icon_bar_section": {
