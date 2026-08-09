@@ -115,6 +115,29 @@
           --color-button-text: {{ block.settings.custom_colors_solid_button_text.red }}, {{ block.settings.custom_colors_solid_button_text.green }}, {{ block.settings.custom_colors_solid_button_text.blue }};
           --color-base-outline-button-labels: {{ block.settings.custom_colors_outline_button.red }}, {{ block.settings.custom_colors_outline_button.green }}, {{ block.settings.custom_colors_outline_button.blue }};
         }
+        {%- if block.settings.heading_color != blank and block.settings.heading_color != 'rgba(0,0,0,0)' -%}
+          #Slide-{{ section.id }}-{{ forloop.index }} .banner__heading {
+            color: {{ block.settings.heading_color }} !important;
+            background: none !important;
+            -webkit-text-fill-color: {{ block.settings.heading_color }} !important;
+            filter: none !important;
+          }
+        {%- endif -%}
+        {%- if block.settings.heading_em_color != blank and block.settings.heading_em_color != 'rgba(0,0,0,0)' -%}
+          #Slide-{{ section.id }}-{{ forloop.index }} .banner__heading em,
+          #Slide-{{ section.id }}-{{ forloop.index }} .slideshow__text em {
+            color: {{ block.settings.heading_em_color }} !important;
+            -webkit-text-fill-color: {{ block.settings.heading_em_color }} !important;
+            text-shadow: none !important;
+          }
+        {%- endif -%}
+        {%- if block.settings.subheading_color != blank and block.settings.subheading_color != 'rgba(0,0,0,0)' -%}
+          #Slide-{{ section.id }}-{{ forloop.index }} .hero-subtext-custom,
+          #Slide-{{ section.id }}-{{ forloop.index }} .slideshow__text .banner__text p {
+            color: {{ block.settings.subheading_color }} !important;
+            text-shadow: none !important;
+          }
+        {%- endif -%}
       </style>
       <div
         class="slideshow__slide grid__item grid--1-col slider__slide"
@@ -933,6 +956,18 @@
         },
         {
           "type": "color",
+          "id": "heading_color",
+          "label": "Heading text color",
+          "info": "Leave blank to use default golden gradient."
+        },
+        {
+          "type": "color",
+          "id": "heading_em_color",
+          "label": "Heading script text color",
+          "info": "Color for <em> text in heading. Leave blank for default."
+        },
+        {
+          "type": "color",
           "id": "title_highlight_color",
           "label": "Heading highlight color",
           "default": "#6D388B"
@@ -962,6 +997,12 @@
           "id": "subheading",
           "default": "Tell your brand's story through images",
           "label": "t:sections.slideshow.blocks.slide.settings.subheading.label"
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "Subheading text color",
+          "info": "Leave blank for default."
         },
         {
           "type": "text",

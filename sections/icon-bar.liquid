@@ -36,6 +36,33 @@
     --gradient-background: {% if section.settings.custom_cards_gradient_background != blank %}{{ section.settings.custom_cards_gradient_background }}{% else %}{{ section.settings.custom_cards_colors_background }}{% endif %};
     --color-foreground: {{ section.settings.custom_cards_colors_text.red }}, {{ section.settings.custom_cards_colors_text.green }}, {{ section.settings.custom_cards_colors_text.blue }};
   }
+  {%- if section.settings.card_title_color != blank and section.settings.card_title_color != 'rgba(0,0,0,0)' -%}
+    .color-scheme-{{ section.id }} .multicolumn-card__info h3,
+    .color-scheme-{{ section.id }}.icon-bar-luxury .multicolumn-card__info h3 {
+      color: {{ section.settings.card_title_color }} !important;
+      text-shadow: none !important;
+    }
+  {%- endif -%}
+  {%- if section.settings.card_subtext_color != blank and section.settings.card_subtext_color != 'rgba(0,0,0,0)' -%}
+    .color-scheme-{{ section.id }} .multicolumn-card__info p,
+    .color-scheme-{{ section.id }} .multicolumn-card__info .rte,
+    .color-scheme-{{ section.id }}.icon-bar-luxury .multicolumn-card__info p {
+      color: {{ section.settings.card_subtext_color }} !important;
+      text-shadow: none !important;
+    }
+  {%- endif -%}
+  {%- if section.settings.custom_icon_color != blank and section.settings.custom_icon_color != 'rgba(0,0,0,0)' -%}
+    .color-scheme-{{ section.id }} .material-icon,
+    .color-scheme-{{ section.id }}.icon-bar-luxury .material-icon {
+      color: {{ section.settings.custom_icon_color }} !important;
+      filter: none !important;
+    }
+  {%- endif -%}
+  {%- if section.settings.custom_card_bg_color != blank and section.settings.custom_card_bg_color != 'rgba(0,0,0,0)' -%}
+    .color-scheme-{{ section.id }}.icon-bar-luxury .icon-bar-card {
+      background: {{ section.settings.custom_card_bg_color }} !important;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 <div class="icon-bar icon-bar-luxury multicolumn animate-section animate--hidden color-scheme-{{ section.id }} color-{{ section.settings.color_scheme }} gradient{% if section.settings.title == blank %} no-heading{% endif %} content-for-grouping {{ section.settings.visibility }}" data-mobile-columns="{{ section.settings.columns_mobile }}">
@@ -746,6 +773,30 @@
       "id": "custom_cards_colors_text",
       "default": "#2E2A39",
       "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title color",
+      "info": "Leave empty for default."
+    },
+    {
+      "type": "color",
+      "id": "card_subtext_color",
+      "label": "Card subtitle color",
+      "info": "Leave empty for default."
+    },
+    {
+      "type": "color",
+      "id": "custom_icon_color",
+      "label": "Custom icon color",
+      "info": "Leave empty for default gold."
+    },
+    {
+      "type": "color",
+      "id": "custom_card_bg_color",
+      "label": "Custom card background glass",
+      "info": "Leave empty for default glass."
     }
   ],
   "blocks": [
