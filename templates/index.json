@@ -52,9 +52,12 @@
             "mobile_image": "shopify://shop_images/ChatGPT_Image_Aug_5_2026_09_39_02_AM.webp",
             "image_overlay_opacity": 0,
             "heading": "<em>A Gift That</em> SPEAKS FROM THE HEART",
+            "heading_color": "",
+            "heading_em_color": "",
             "title_highlight_color": "#dfb256",
             "heading_size": "h0",
             "subheading": "Premium Diamond Love Necklace – a timeless symbol of love, beautifully crafted for the one who means everything.",
+            "subheading_color": "",
             "button_label": "SHOP NOW",
             "link": "https://www.hevis.store/products/diamond-love-necklace-best-gift-for-her-shop-234073-1510",
             "button_style_secondary": false,
@@ -183,7 +186,8 @@
         "custom_cards_colors_text": "#ffffff",
         "card_title_color": "",
         "card_subtext_color": "",
-        "custom_icon_color": ""
+        "custom_icon_color": "",
+        "custom_card_bg_color": ""
       }
     },
     "feature_icon_bar_section": {
@@ -534,7 +538,7 @@
         "row_1": {
           "type": "row",
           "settings": {
-            "benefit": "<strong>100% Solid Sterling Silver & 18K Gold Plated</strong>",
+            "benefit": "<strong>Luxury Gift Box Option Available</strong>",
             "us": true,
             "others": false,
             "others_2": false,
@@ -544,7 +548,7 @@
         "row_2": {
           "type": "row",
           "settings": {
-            "benefit": "<strong>Custom Heartfelt Message Card Included</strong>",
+            "benefit": "<strong>100% customer satisfaction on design</strong>",
             "us": true,
             "others": false,
             "others_2": false,
@@ -722,6 +726,22 @@
         "padding_top": 64,
         "padding_bottom": 64
       }
+    },
+    "we_are_expanding_section": {
+      "type": "we-are-expanding",
+      "settings": {
+        "visibility": "always-display",
+        "badge_text": "STAY TUNED",
+        "heading": "We’re <em>Expanding</em>",
+        "subheading": "<p>More designs coming soon. Stay tuned!</p>",
+        "show_email_signup": false,
+        "background_color": "#faf8f5",
+        "heading_color": "#1a1612",
+        "text_color": "#666055",
+        "accent_color": "#c8a15a",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
@@ -732,6 +752,7 @@
     "sentiment_slider_section",
     "image_slider_943Lxm",
     "d2d3417b-e92f-428c-b221-5bceffb552be",
-    "customer_reviews_carousel_section"
+    "customer_reviews_carousel_section",
+    "we_are_expanding_section"
   ]
 }

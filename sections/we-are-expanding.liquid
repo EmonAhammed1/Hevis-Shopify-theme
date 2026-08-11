@@ -1,0 +1,558 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .we-are-expanding--{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    isolation: isolate;
+  }
+
+  /* Ambient Glowing Light Orbs */
+  .we-are-expanding--{{ section.id }} .expanding-ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: {{ section.settings.orb_opacity | default: 0.5 }};
+    pointer-events: none;
+    z-index: 0;
+    animation: floatExpandingOrb 12s ease-in-out infinite alternate;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding-ambient-orb--1 {
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, {{ section.settings.accent_color }}55 0%, {{ section.settings.accent_color }}00 70%);
+    top: -60px;
+    left: 10%;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding-ambient-orb--2 {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, {{ section.settings.accent_color }}40 0%, {{ section.settings.accent_color }}00 70%);
+    bottom: -80px;
+    right: 12%;
+    animation-delay: -6s;
+  }
+
+  @keyframes floatExpandingOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-15px, -20px) scale(1.05); }
+    100% { transform: translate(15px, -10px) scale(0.98); }
+  }
+
+  /* Inner Card Container */
+  .we-are-expanding--{{ section.id }} .expanding__card-box {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4.5rem 3rem;
+    border-radius: 24px;
+    background: {{ section.settings.card_bg_color }};
+    border: 1px solid {{ section.settings.card_border_color }};
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05), 0 0 30px {{ section.settings.accent_color }}14;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  @media screen and (max-width: 749px) {
+    .we-are-expanding--{{ section.id }} .expanding__card-box {
+      padding: 3.2rem 1.8rem;
+      border-radius: 18px;
+    }
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding__card-box:hover {
+    border-color: {{ section.settings.accent_color }}60;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 0 40px {{ section.settings.accent_color }}26;
+  }
+
+  /* Glowing Top Badge */
+  .we-are-expanding--{{ section.id }} .expanding__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.6rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, {{ section.settings.accent_color }}1F, {{ section.settings.accent_color }}0A);
+    border: 1px solid {{ section.settings.accent_color }}40;
+    color: {{ section.settings.accent_color }};
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+    box-shadow: 0 4px 15px {{ section.settings.accent_color }}18;
+    animation: luxuryGlowPulse 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes luxuryGlowPulse {
+    0% { box-shadow: 0 0 10px {{ section.settings.accent_color }}20; }
+    100% { box-shadow: 0 0 22px {{ section.settings.accent_color }}45; }
+  }
+
+  /* Title with Gold Gradient Shimmer */
+  .we-are-expanding--{{ section.id }} .expanding__title {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: 600;
+    font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+    line-height: 1.15;
+    color: {{ section.settings.heading_color }};
+    letter-spacing: -0.01em;
+    margin: 0 0 1.4rem 0;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding__title em {
+    font-style: italic;
+    font-family: var(--font-heading-family);
+    background: linear-gradient(135deg, #c8a15a 0%, #e2b668 50%, #b58b43 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldTextShimmer 4s linear infinite;
+  }
+
+  @keyframes goldTextShimmer {
+    to { background-position: 200% center; }
+  }
+
+  /* Luxury Gold Line Divider */
+  .we-are-expanding--{{ section.id }} .expanding__divider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 0 auto 1.6rem auto;
+    width: max-content;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding__line {
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(90deg, transparent, {{ section.settings.accent_color }}70, transparent);
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding__diamond-icon {
+    color: {{ section.settings.accent_color }};
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    animation: rotateDiamond 10s linear infinite;
+  }
+
+  @keyframes rotateDiamond {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Subheading */
+  .we-are-expanding--{{ section.id }} .expanding__subheading {
+    font-size: clamp(1.45rem, 1.9vw, 1.8rem);
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    max-width: 580px;
+    margin: 0 auto;
+    opacity: 0.92;
+  }
+
+  /* Minimal Luxury Pill Tags */
+  .we-are-expanding--{{ section.id }} .expanding__tags {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.2rem;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    background: {{ section.settings.tag_bg_color }};
+    border: 1px solid {{ section.settings.tag_border_color }};
+    color: {{ section.settings.heading_color }};
+    font-size: 1.25rem;
+    font-weight: 500;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding__tag:hover {
+    transform: translateY(-2px);
+    border-color: {{ section.settings.accent_color }}80;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding__tag .material-icon {
+    color: {{ section.settings.accent_color }};
+    font-size: 1.6rem;
+  }
+
+  /* Form Styling */
+  .we-are-expanding--{{ section.id }} .expanding__form-wrapper {
+    max-width: 480px;
+    margin: 2.5rem auto 0 auto;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding-form {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  @media screen and (max-width: 520px) {
+    .we-are-expanding--{{ section.id }} .expanding-form {
+      flex-direction: column;
+    }
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding-input {
+    flex: 1;
+    padding: 1.3rem 2rem;
+    border-radius: 50px;
+    background: {{ section.settings.input_bg_color }};
+    border: 1px solid {{ section.settings.input_border_color }};
+    color: {{ section.settings.heading_color }};
+    font-size: 1.35rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding-input::placeholder {
+    color: {{ section.settings.text_color }};
+    opacity: 0.6;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding-input:focus {
+    border-color: {{ section.settings.accent_color }};
+    box-shadow: 0 0 15px {{ section.settings.accent_color }}30;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding-btn {
+    padding: 1.3rem 2.6rem;
+    border-radius: 50px;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 15px {{ section.settings.button_bg_color }}35;
+  }
+
+  .we-are-expanding--{{ section.id }} .expanding-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px {{ section.settings.button_bg_color }}55;
+  }
+{%- endstyle -%}
+
+<div class="we-are-expanding--{{ section.id }} content-for-grouping animate-section animate--hidden {{ section.settings.visibility }}">
+  <div class="expanding-ambient-orb expanding-ambient-orb--1"></div>
+  <div class="expanding-ambient-orb expanding-ambient-orb--2"></div>
+
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="expanding__card-box">
+      
+      {%- if section.settings.badge_text != blank -%}
+        <div class="expanding__badge animate-item animate-item--child" style="--index: 1;">
+          {% render 'material-icon', icon: 'auto_awesome', filled: true %}
+          <span>{{ section.settings.badge_text }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="expanding__title animate-item animate-item--child" style="--index: 2;">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      <div class="expanding__divider-wrapper animate-item animate-item--child" style="--index: 3;">
+        <span class="expanding__line"></span>
+        <span class="expanding__diamond-icon">
+          {% render 'material-icon', icon: 'diamond', filled: true %}
+        </span>
+        <span class="expanding__line"></span>
+      </div>
+
+      {%- if section.settings.subheading != blank -%}
+        <div class="expanding__subheading rte animate-item animate-item--child" style="--index: 4;">
+          {{ section.settings.subheading }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_tags -%}
+        <div class="expanding__tags animate-item animate-item--child" style="--index: 5;">
+          <span class="expanding__tag">
+            {% render 'material-icon', icon: 'palette', filled: true %}
+            <span>{{ section.settings.tag_1 | default: 'New Keepsake Designs' }}</span>
+          </span>
+          <span class="expanding__tag">
+            {% render 'material-icon', icon: 'mark_email_unread', filled: true %}
+            <span>{{ section.settings.tag_2 | default: 'Sentimental Card Drops' }}</span>
+          </span>
+          <span class="expanding__tag">
+            {% render 'material-icon', icon: 'stars', filled: true %}
+            <span>{{ section.settings.tag_3 | default: 'Exclusive Releases' }}</span>
+          </span>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_email_signup -%}
+        <div class="expanding__form-wrapper animate-item animate-item--child" style="--index: 6;">
+          {% form 'customer', class: 'expanding-form' %}
+            <input type="hidden" name="contact[tags]" value="newsletter, expanding_vip">
+            <input
+              id="ExpandingForm--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="expanding-input"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              placeholder="{{ section.settings.email_placeholder | default: 'Enter your email for updates...' }}"
+              required
+            >
+            <button
+              type="submit"
+              class="expanding-btn"
+              name="commit"
+            >
+              {{ section.settings.button_label | default: 'STAY TUNED' }}
+            </button>
+          {% endform %}
+          
+          {%- if form.posted_successfully? -%}
+            <p class="form__message form__message--success" style="color: {{ section.settings.accent_color }}; margin-top: 1.2rem; font-size: 1.35rem;">
+              {% render 'material-icon', icon: 'check_circle', filled: true %} Thank you! We will notify you when new designs drop.
+            </p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "We're Expanding Banner",
+  "tag": "section",
+  "class": "section-we-are-expanding",
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "always-display", "label": "Always display" },
+        { "value": "hide-on-mobile", "label": "Hide on mobile" },
+        { "value": "hide-on-desktop", "label": "Hide on desktop" }
+      ],
+      "default": "always-display",
+      "label": "Visibility"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Top Badge Text",
+      "default": "STAY TUNED"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We’re <em>Expanding</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>More designs coming soon. Stay tuned for our upcoming luxury collections & exclusive drops!</p>"
+    },
+    {
+      "type": "header",
+      "content": "Pill Tags"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show Luxury Feature Tags",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "tag_1",
+      "label": "Tag 1 Text",
+      "default": "New Keepsake Designs"
+    },
+    {
+      "type": "text",
+      "id": "tag_2",
+      "label": "Tag 2 Text",
+      "default": "Sentimental Card Drops"
+    },
+    {
+      "type": "text",
+      "id": "tag_3",
+      "label": "Tag 3 Text",
+      "default": "Exclusive Releases"
+    },
+    {
+      "type": "header",
+      "content": "Email Signup Form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email_signup",
+      "label": "Show Email Signup",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email Input Placeholder",
+      "default": "Enter your email for updates..."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "STAY TUNED"
+    },
+    {
+      "type": "header",
+      "content": "Custom Styling & Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#faf8f5"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Box Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Box Border Color",
+      "default": "#e6dac8"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1a1612"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#666055"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Gold)",
+      "default": "#c8a15a"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Tag Background Color",
+      "default": "#faf7f2"
+    },
+    {
+      "type": "color",
+      "id": "tag_border_color",
+      "label": "Tag Border Color",
+      "default": "#e6c994"
+    },
+    {
+      "type": "color",
+      "id": "input_bg_color",
+      "label": "Input Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input Border Color",
+      "default": "#e2ded7"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#c8a15a"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "orb_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Ambient Glow Opacity",
+      "default": 0.5
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "We're Expanding Banner"
+    }
+  ]
+}
+{% endschema %}

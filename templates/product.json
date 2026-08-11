@@ -796,6 +796,22 @@
         "display_id": false,
         "include_margins": true
       }
+    },
+    "we_are_expanding_section": {
+      "type": "we-are-expanding",
+      "settings": {
+        "visibility": "always-display",
+        "badge_text": "STAY TUNED",
+        "heading": "We’re <em>Expanding</em>",
+        "subheading": "<p>More designs coming soon. Stay tuned!</p>",
+        "show_email_signup": false,
+        "background_color": "#faf8f5",
+        "heading_color": "#1a1612",
+        "text_color": "#666055",
+        "accent_color": "#c8a15a",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
@@ -804,6 +820,7 @@
     "8beb6911-28c6-482c-976a-e5421ad3e8df",
     "image_slider_FVhjbN",
     "customer_reviews_carousel_cnLgMk",
-    "17859040449d4017d8"
+    "17859040449d4017d8",
+    "we_are_expanding_section"
   ]
 }
