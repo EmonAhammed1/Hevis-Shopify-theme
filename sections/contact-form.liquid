@@ -11,6 +11,10 @@
     }
   }
 
+  #ContactForm-{{ section.id }} .title {
+    text-align: center;
+  }
+
   #ContactForm-{{ section.id }} .contact-from__errors-container,
   #ContactForm-{{ section.id }} .contact__field-error {
     --color-foreground: {{ section.settings.errors_text_color.red }}, {{ section.settings.errors_text_color.green }}, {{ section.settings.errors_text_color.blue }};

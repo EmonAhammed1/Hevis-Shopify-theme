@@ -1,0 +1,334 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .contact-cards-container--{{ section.id }} {
+    max-width: 840px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-cards-heading--{{ section.id }} {
+    margin: 0 0 3rem 0;
+    font-size: {{ section.settings.heading_size_desktop }}px;
+    font-weight: 700;
+    text-align: center;
+    color: rgb(var(--color-foreground));
+    letter-spacing: -0.02em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .contact-cards-heading--{{ section.id }} {
+      font-size: {{ section.settings.heading_size_mobile }}px;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .contact-cards-grid--{{ section.id }} {
+    display: grid;
+    grid-template-columns: repeat({{ section.blocks.size | default: 2 | at_most: 3 }}, 1fr);
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  @media screen and (max-width: 640px) {
+    .contact-cards-grid--{{ section.id }} {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .contact-card-box--{{ section.id }} {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 20px;
+    padding: 3.2rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card-box--{{ section.id }}:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+    border-color: #c69c58;
+  }
+
+  .contact-card-icon-wrapper--{{ section.id }} {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: rgba(198, 156, 88, 0.14);
+    color: #c69c58;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .contact-card-box--{{ section.id }}:hover .contact-card-icon-wrapper--{{ section.id }} {
+    background-color: #c69c58;
+    color: #ffffff;
+    transform: scale(1.1);
+  }
+
+  .contact-card-icon-wrapper--{{ section.id }} .material-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-card-custom-img {
+    max-width: 36px;
+    max-height: 36px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .contact-card-title--{{ section.id }} {
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem 0;
+    color: rgb(var(--color-foreground));
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  .contact-card-detail--{{ section.id }} {
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.55;
+    color: rgb(var(--color-foreground));
+    margin: 0;
+    word-break: break-word;
+  }
+
+  .contact-card-detail--{{ section.id }} p {
+    margin: 0;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 749px) {
+    .contact-card-title--{{ section.id }} {
+      font-size: 2.0rem;
+    }
+    .contact-card-detail--{{ section.id }} {
+      font-size: 1.55rem;
+    }
+    .contact-card-box--{{ section.id }} {
+      padding: 2.5rem 1.8rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-scheme-{{ section.id }} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="contact-cards-container--{{ section.id }}">
+      {%- if section.settings.title != blank -%}
+        <h1 class="contact-cards-heading--{{ section.id }}">
+          {{ section.settings.title }}
+        </h1>
+      {%- endif -%}
+
+      <div class="contact-cards-grid--{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="contact-card-box--{{ section.id }}" {{ block.shopify_attributes }}>
+          {%- else -%}
+            <div class="contact-card-box--{{ section.id }}" {{ block.shopify_attributes }}>
+          {%- endif -%}
+
+            <div class="contact-card-icon-wrapper--{{ section.id }}">
+              {%- if block.settings.custom_icon != blank -%}
+                <img
+                  src="{{ block.settings.custom_icon | image_url: width: 120 }}"
+                  alt="{{ block.settings.title | escape }}"
+                  width="36"
+                  height="36"
+                  loading="lazy"
+                  class="contact-card-custom-img"
+                >
+              {%- elsif block.settings.material_icon != blank and block.settings.material_icon != 'none' -%}
+                {% render 'material-icon', icon: block.settings.material_icon, filled: true %}
+              {%- else -%}
+                <span class="material-icon material-symbols-outlined filled">mail</span>
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.title != blank -%}
+              <h2 class="contact-card-title--{{ section.id }}">
+                {{ block.settings.title }}
+              </h2>
+            {%- endif -%}
+
+            {%- if block.settings.text != blank -%}
+              <div class="contact-card-detail--{{ section.id }}">
+                {{ block.settings.text }}
+              </div>
+            {%- endif -%}
+
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- else -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact Info Cards",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Contact"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "accent-1", "label": "Accent 1" },
+        { "value": "accent-2", "label": "Accent 2" },
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Contact Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Email"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Card Details",
+          "default": "<p>Support@hevis.store</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom Icon Image",
+          "info": "Upload a custom PNG/SVG icon to replace the default icon"
+        },
+        {
+          "type": "text",
+          "id": "material_icon",
+          "label": "Material Icon Name",
+          "default": "mail",
+          "info": "Enter a Material Icon name e.g. mail, chat, call, location_on"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Info Cards",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Email",
+            "text": "<p>Support@hevis.store</p>",
+            "link": "mailto:Support@hevis.store",
+            "material_icon": "mail"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Chat",
+            "text": "<p>You can contact us via our Chat box in the bottom right corner</p>",
+            "material_icon": "chat"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

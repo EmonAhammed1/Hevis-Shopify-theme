@@ -535,20 +535,20 @@
     "d2d3417b-e92f-428c-b221-5bceffb552be": {
       "type": "comparison-table",
       "blocks": {
-        "row_1": {
+        "row_GtUTYq": {
           "type": "row",
           "settings": {
-            "benefit": "<strong>Luxury Gift Box Option Available</strong>",
+            "benefit": "<strong>100% Solid Sterling Silver & 18K Gold Plated</strong>",
             "us": true,
             "others": false,
             "others_2": false,
             "others_3": false
           }
         },
-        "row_2": {
+        "row_8KMkbq": {
           "type": "row",
           "settings": {
-            "benefit": "<strong>100% customer satisfaction on design</strong>",
+            "benefit": "<strong>Custom Heartfelt Message Card Included</strong>",
             "us": true,
             "others": false,
             "others_2": false,
@@ -575,20 +575,20 @@
             "others_3": false
           }
         },
-        "row_5": {
+        "row_1": {
           "type": "row",
           "settings": {
-            "benefit": "<strong>Luxury Gift Box & Elegant Ribbon Packaging</strong>",
+            "benefit": "<strong>Luxury Gift Box Option Available</strong>",
             "us": true,
             "others": false,
             "others_2": false,
             "others_3": false
           }
         },
-        "row_6": {
+        "row_2": {
           "type": "row",
           "settings": {
-            "benefit": "<strong>100% Satisfaction & Money-Back Guarantee</strong>",
+            "benefit": "<strong>100% customer satisfaction on design</strong>",
             "us": true,
             "others": false,
             "others_2": false,
@@ -597,12 +597,12 @@
         }
       },
       "block_order": [
-        "row_1",
-        "row_2",
+        "row_GtUTYq",
+        "row_8KMkbq",
         "row_3",
         "row_4",
-        "row_5",
-        "row_6"
+        "row_1",
+        "row_2"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/hero_bg.webp",
@@ -734,11 +734,26 @@
         "badge_text": "STAY TUNED",
         "heading": "We’re <em>Expanding</em>",
         "subheading": "<p>More designs coming soon. Stay tuned!</p>",
+        "show_tags": true,
+        "tag_1": "New Keepsake Designs",
+        "tag_2": "Sentimental Card Drops",
+        "tag_3": "Exclusive Releases",
         "show_email_signup": false,
+        "email_placeholder": "Enter your email for updates...",
+        "button_label": "STAY TUNED",
         "background_color": "#faf8f5",
+        "card_bg_color": "#ffffff",
+        "card_border_color": "#e6dac8",
         "heading_color": "#1a1612",
         "text_color": "#666055",
         "accent_color": "#c8a15a",
+        "tag_bg_color": "#faf7f2",
+        "tag_border_color": "#e6c994",
+        "input_bg_color": "#ffffff",
+        "input_border_color": "#e2ded7",
+        "button_bg_color": "#c8a15a",
+        "button_text_color": "#ffffff",
+        "orb_opacity": 0.5,
         "padding_top": 48,
         "padding_bottom": 48
       }
