@@ -47,6 +47,43 @@
       }
     }
   {% endif %}
+  {% if section.settings.stretch_cards %}
+    .product-grid.grid--stretch {
+      align-items: stretch !important;
+    }
+    .product-grid.grid--stretch .grid__item {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .product-grid.grid--stretch .card-wrapper {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+      width: 100% !important;
+    }
+    .product-grid.grid--stretch .card {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+      flex-grow: 1 !important;
+    }
+    .product-grid.grid--stretch .card__content {
+      display: flex !important;
+      flex-direction: column !important;
+      flex-grow: 1 !important;
+    }
+    .product-grid.grid--stretch .card__information {
+      display: flex !important;
+      flex-direction: column !important;
+      flex-grow: 1 !important;
+    }
+    .product-grid.grid--stretch .card-information {
+      margin-top: auto !important;
+    }
+    .product-grid.grid--stretch .quick-add {
+      margin-top: auto !important;
+    }
+  {% endif %}
 {%- endstyle -%}
 
 <div class="color-scheme-{{ section.id }} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding animate-section animate--hidden">
