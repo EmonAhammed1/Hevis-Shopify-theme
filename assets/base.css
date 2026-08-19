@@ -126,14 +126,21 @@ html {scroll-behavior: smooth;}img, video {max-width: 100%;height: auto;vertical
 
 /* Section Wrapper Reset: Nuke all borders, dividers & subpixel lines between sections */
 #shopify-section-cfca4268-6358-426c-98ab-d292aeef11e5,
-#shopify-section-6aa09428-a417-429d-9159-a4e8afd49590,
-.shopify-section {
+#shopify-section-6aa09428-a417-429d-9159-a4e8afd49590 {
   border: none !important;
   border-top: none !important;
   border-bottom: none !important;
   outline: none !important;
   box-shadow: none !important;
   background-color: #0c0b0e !important;
+}
+
+.shopify-section {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #shopify-section-cfca4268-6358-426c-98ab-d292aeef11e5::before,
